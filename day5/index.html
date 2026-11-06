@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nandana Annual · Vol. 01</title>
+<meta name="description" content="The first and only edition. Copy 1 of 1.">
+<meta name="robots" content="noindex, nofollow">
+<script src="../guard.js" data-unlock="2026-11-10T00:00:00+05:30" data-label="10 Nov, your birthday"></script>
+<style>
+@font-face{font-family:"Bodoni Moda";src:url(fonts/bodoni-moda-latin-wght-normal.woff2) format("woff2");font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Bodoni Moda";src:url(fonts/bodoni-moda-latin-wght-italic.woff2) format("woff2");font-weight:400 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Source Serif 4";src:url(fonts/source-serif-4-latin-wght-normal.woff2) format("woff2");font-weight:200 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Source Serif 4";src:url(fonts/source-serif-4-latin-wght-italic.woff2) format("woff2");font-weight:200 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Anton";src:url(fonts/anton-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Caveat";src:url(fonts/caveat-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+:root{
+  --paper:#f5efe3; --paper-2:#ebe2d0; --ink:#17130f; --muted:#6b6257;
+  --red:#d3202f; --gold:#b8892e; --yellow:#ffd21f; --night:#121014;
+  --display:"Bodoni Moda",Didot,serif; --tab:"Anton",Impact,sans-serif;
+  --body:"Source Serif 4",Georgia,serif; --hand:"Caveat",cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:radial-gradient(ellipse at 50% 40%,#2c2530 0%,#141016 70%);color:var(--ink);font-family:var(--body);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.stage{width:min(96vw, calc((100vh - 90px) / 1.4 * 2));display:flex;justify-content:center}
+#book{width:100%}
+.hint{color:#cbbfae;font:500 13px/1 var(--body);letter-spacing:.08em;display:flex;align-items:center;gap:18px;user-select:none}
+.hint button{background:none;border:1px solid #6d6157;color:#efe4d3;width:38px;height:38px;border-radius:50%;font-size:18px;cursor:pointer;transition:background .2s}
+.hint button:hover{background:#3a3139}
+#pg{min-width:110px;text-align:center}
+#hubl{color:#cbbfae;font-size:12px;letter-spacing:.06em;text-decoration:none;border-bottom:1px solid #6d6157;margin-left:6px;opacity:.8}
+
+/* ---------- page base ---------- */
+.page{background:var(--paper);overflow:hidden;container-type:inline-size;position:relative}
+.page .in{position:absolute;inset:0;padding:7cqw 7cqw 8cqw;display:flex;flex-direction:column}
+.page.hard{background:var(--night)}
+.folio{position:absolute;bottom:3.2cqw;left:0;right:0;display:flex;justify-content:space-between;padding:0 7cqw;font:600 2.1cqw/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.page:nth-child(even) .folio{flex-direction:row-reverse}
+.page::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 6cqw rgba(80,60,30,.10)}
+.page.hard::after{box-shadow:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.kicker{font:700 2.4cqw/1 var(--body);letter-spacing:.28em;text-transform:uppercase;color:var(--red)}
+.hed{font-family:var(--display);font-weight:800;line-height:.95;letter-spacing:-.01em}
+.tab{font-family:var(--tab);text-transform:uppercase;line-height:.92;letter-spacing:.005em}
+p{font-size:3.15cqw;line-height:1.45;hyphens:auto}
+p+p{margin-top:1.6cqw}
+.dek{font-family:var(--display);font-style:italic;font-size:4.2cqw;line-height:1.25;color:#3b332b}
+.cap{font:italic 2.5cqw/1.35 var(--body);color:var(--muted);margin-top:1.4cqw}
+.rule{height:.5cqw;background:var(--ink);margin:2.4cqw 0}
+.rule.thin{height:.25cqw}
+.drop::first-letter{font-family:var(--display);font-weight:900;float:left;font-size:12cqw;line-height:.8;padding:1cqw 1.6cqw 0 0;color:var(--red)}
+.frame{overflow:hidden;background:#ddd}
+
+/* ---------- 1 cover ---------- */
+.cover img{position:absolute;inset:0;object-position:50% 30%}
+.cover .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 52%,rgba(0,0,0,.72) 100%)}
+.cover .mast{position:absolute;top:4.5cqw;left:0;right:0;text-align:center;color:#fff}
+.cover .mast .t{font-family:var(--display);font-weight:900;font-size:17.4cqw;line-height:.85;letter-spacing:-.02em;text-shadow:0 .4cqw 2cqw rgba(0,0,0,.25)}
+.cover .mast .s{display:flex;justify-content:space-between;padding:1.8cqw 6cqw 0;font:700 2.2cqw/1 var(--body);letter-spacing:.3em;text-transform:uppercase}
+.cover .lines{position:absolute;left:6cqw;bottom:16cqw;width:52cqw;color:#fff}
+.cover .lines .big{font-family:var(--display);font-weight:900;font-style:italic;font-size:9.4cqw;line-height:.9}
+.cover .lines .big b{color:var(--yellow);font-style:normal}
+.cover .lines .sm{font:600 3cqw/1.25 var(--body);margin-top:2.4cqw;padding-left:2cqw;border-left:.7cqw solid var(--yellow)}
+.cover .lines .sm span{display:block;font-weight:400;font-style:italic;opacity:.9}
+.cover .side{position:absolute;right:5cqw;top:44cqw;width:27cqw;text-align:right;color:#fff}
+.cover .side .tab{font-size:6.6cqw;color:var(--yellow)}
+.cover .side div{font:600 2.7cqw/1.25 var(--body);margin-top:1cqw}
+.cover .bottom{position:absolute;left:6cqw;right:6cqw;bottom:4.5cqw;display:flex;align-items:flex-end;justify-content:space-between;color:#fff}
+.cover .badge{font:700 2.2cqw/1.3 var(--body);letter-spacing:.2em;text-transform:uppercase}
+.barcode{background:#fff;padding:1.2cqw 1.6cqw .8cqw;color:#000;font:600 1.7cqw/1 var(--body);text-align:center;letter-spacing:.2em}
+.barcode i{display:block;width:20cqw;height:7cqw;margin-bottom:.8cqw;background:repeating-linear-gradient(90deg,#000 0 .35cqw,#fff .35cqw .7cqw,#000 .7cqw 1.4cqw,#fff 1.4cqw 1.65cqw,#000 1.65cqw 1.85cqw,#fff 1.85cqw 2.5cqw)}
+
+/* ---------- 2 first edition ---------- */
+.ed .in{align-items:center;text-align:center;justify-content:center;background:var(--paper)}
+.ed .border{position:absolute;inset:4cqw;border:.4cqw solid var(--gold);outline:.2cqw solid var(--gold);outline-offset:-1.6cqw}
+.ed .kicker{color:var(--gold)}
+.ed h2{font-family:var(--display);font-weight:800;font-size:10cqw;line-height:.95;margin:2.4cqw 0 1cqw}
+.ed .num{font-family:var(--display);font-style:italic;font-size:4.6cqw;color:#3b332b}
+.ed .portrait{width:40cqw;height:50cqw;margin:4cqw 0 4cqw;border:1.4cqw solid #fff;box-shadow:0 1.2cqw 3cqw rgba(0,0,0,.18);transform:rotate(-2deg)}
+.ed .portrait img{object-position:50% 40%}
+.ed p{max-width:66cqw;font-size:3cqw}
+.stamp{position:absolute;right:9cqw;top:66cqw;width:24cqw;height:24cqw;border-radius:50%;border:.7cqw solid var(--red);color:var(--red);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(14deg);font:700 2.2cqw/1.15 var(--body);letter-spacing:.14em;text-transform:uppercase;opacity:.88}
+.stamp b{font-family:var(--tab);font-size:6cqw;letter-spacing:.02em;font-weight:400}
+
+/* ---------- 3 contents ---------- */
+.toc h2{font-family:var(--display);font-weight:900;font-size:14cqw;line-height:.85;letter-spacing:-.02em}
+.toc h2 em{color:var(--red)}
+.toc ol{list-style:none;margin-top:3.5cqw}
+.toc li{display:grid;grid-template-columns:11cqw 1fr;gap:3cqw;padding:1.25cqw 0;border-top:.25cqw solid var(--ink)}
+.toc li:last-child{border-bottom:.25cqw solid var(--ink)}
+.toc .n{font-family:var(--display);font-weight:900;font-size:8cqw;line-height:.9;color:var(--red)}
+.toc .t{font-family:var(--display);font-weight:700;font-size:4.4cqw;line-height:1.05}
+.toc .d{font:italic 2.8cqw/1.3 var(--body);color:var(--muted);margin-top:.6cqw}
+
+/* ---------- 4 intro ---------- */
+.intro .hero{height:62cqw;margin:-7cqw -7cqw 4cqw}
+.intro .hero img{object-position:50% 25%}
+.intro h2{font-size:10.5cqw;margin:1.5cqw 0 2cqw}
+.intro .cols{column-count:2;column-gap:4.5cqw}
+.intro .cols p{font-size:2.95cqw}
+.tags{display:flex;flex-wrap:wrap;gap:1.4cqw;margin-top:3cqw}
+.tags span{font:700 2.2cqw/1 var(--body);letter-spacing:.12em;text-transform:uppercase;border:.3cqw solid var(--ink);border-radius:9cqw;padding:1.2cqw 2.2cqw}
+.tags span:nth-child(3n+1){background:var(--ink);color:var(--paper)}
+
+/* ---------- 5 doctor (newspaper) ---------- */
+.news{background:#f1ede4}
+.news .flag{text-align:center;border-bottom:.6cqw double var(--ink);padding-bottom:1.6cqw}
+.news .flag .nm{font-family:"Bodoni Moda",serif;font-weight:900;font-size:8cqw;letter-spacing:-.01em}
+.news .flag .meta{display:flex;justify-content:space-between;font:600 2cqw/1 var(--body);letter-spacing:.15em;text-transform:uppercase;border-top:.25cqw solid var(--ink);padding-top:1.2cqw;margin-top:1cqw}
+.news .brk{display:inline-block;background:var(--red);color:#fff;font:400 3.2cqw/1 var(--tab);letter-spacing:.06em;padding:1cqw 2cqw;margin:3cqw 0 1.6cqw}
+.news h2{font-size:9.4cqw;line-height:1}
+.news .grid{display:grid;grid-template-columns:1fr 34cqw;gap:4cqw;margin-top:3cqw;flex:1;min-height:0}
+.news .ph{height:40cqw}
+.news .ph img{object-position:50% 35%}
+.news .stats{border-top:.5cqw solid var(--ink);padding-top:1.6cqw;margin-top:2.2cqw}
+.news .stats div{display:flex;justify-content:space-between;gap:2cqw;font-size:2.6cqw;padding:.9cqw 0;border-bottom:.2cqw dotted #8f877b}
+.news .stats b{font-family:var(--tab);font-weight:400;font-size:3.2cqw;color:var(--red);white-space:nowrap}
+.news p{font-size:2.9cqw}
+
+/* ---------- 6-7 gifts ---------- */
+.full{padding:0!important}
+.full img{position:absolute;inset:0}
+.gifts-l img{object-position:50% 40%;filter:saturate(1.05) contrast(1.05)}
+.gifts-l .label{position:absolute;left:5cqw;right:5cqw;bottom:6cqw;background:var(--yellow);padding:3cqw 3.6cqw;transform:rotate(-1.5deg);box-shadow:0 1cqw 2.5cqw rgba(0,0,0,.3)}
+.gifts-l .label .tab{font-size:6.2cqw}
+.gifts-l .label p{font-size:2.9cqw;margin-top:1cqw;font-style:italic}
+.gifts-r{background:#fff}
+.gifts-r .tab.h{font-size:13.5cqw;margin:2cqw 0 2.5cqw}
+.gifts-r .tab.h em{color:var(--red);font-style:normal}
+.box{border:.5cqw solid var(--ink);padding:3cqw 3.4cqw;margin-top:3.4cqw;position:relative}
+.box .kicker{position:absolute;top:-1.6cqw;left:3cqw;background:#fff;padding:0 1.4cqw}
+.box p{font-family:var(--display);font-size:3.9cqw;line-height:1.3;font-weight:600}
+.tissue{display:flex;gap:2.4cqw;align-items:center;margin-top:auto;padding-top:3cqw;font:600 2.5cqw/1.3 var(--body);color:var(--muted)}
+.tissue i{font-style:normal;font-size:7cqw}
+
+/* ---------- 8-9 kidilam ---------- */
+.glam-l{background:#1b1416;color:#f3e7d3}
+.glam-l .big{position:absolute;inset:0}
+.glam-l .big img{object-position:50% 30%}
+.glam-l .inset img{object-position:55% 45%}
+.glam-l .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,10,.65) 0%,rgba(20,10,10,0) 32%,rgba(20,10,10,0) 60%,rgba(20,10,10,.85) 100%)}
+.glam-l .word{position:absolute;top:6cqw;left:0;right:0;text-align:center;font-family:var(--display);font-weight:900;font-style:italic;font-size:22cqw;line-height:.8;color:#fff;letter-spacing:-.03em}
+.glam-l .sub{position:absolute;top:26cqw;left:0;right:0;text-align:center;font:700 2.4cqw/1 var(--body);letter-spacing:.32em;text-transform:uppercase;color:var(--yellow)}
+.glam-l .inset{position:absolute;right:5cqw;bottom:16cqw;width:30cqw;height:40cqw;border:1cqw solid #f5efe3;transform:rotate(3deg);box-shadow:0 1.4cqw 3cqw rgba(0,0,0,.45)}
+.glam-l .inset img{object-position:50% 20%}
+.glam-l .note{position:absolute;left:6cqw;bottom:8cqw;width:54cqw}
+.glam-l .note p{font-family:var(--display);font-style:italic;font-size:4cqw;line-height:1.25;color:#fff}
+.glam-r .grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:44cqw 40cqw;gap:2.4cqw;margin-bottom:3cqw}
+.glam-r .grid .a{grid-row:span 2}
+.glam-r .grid .a img{object-position:50% 50%}
+.glam-r .grid .b img{object-position:50% 25%}
+.glam-r .grid .c img{object-position:50% 30%}
+.look{font:700 2.1cqw/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-top:.8cqw}
+.glam-r h3{font-family:var(--display);font-weight:800;font-size:6.2cqw;line-height:1}
+.glam-r p{font-size:2.9cqw;margin-top:1.2cqw}
+
+/* ---------- 10-11 gym ---------- */
+.gym-l{background:#0f0f10;color:#fff}
+.gym-l .big{position:absolute;inset:0}
+.gym-l .big img{object-position:40% 30%;filter:grayscale(1) contrast(1.2) brightness(1.12)}
+.gym-l .shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.1) 55%,rgba(0,0,0,.35) 100%)}
+.gym-l .q{position:absolute;left:6cqw;right:6cqw;bottom:9cqw}
+.gym-l .q .tab{font-size:17cqw;line-height:.86}
+.gym-l .q .tab span{color:var(--yellow)}
+.gym-l .q .src{font:italic 2.7cqw/1.3 var(--body);margin-top:2cqw;opacity:.85}
+.gym-l .kicker{position:absolute;top:6cqw;left:6cqw;color:var(--yellow)}
+.gym-r{background:#f3f0ea}
+.hazard{height:4cqw;margin:-7cqw -7cqw 4cqw;background:repeating-linear-gradient(-45deg,var(--yellow) 0 3cqw,#111 3cqw 6cqw)}
+.warn{border:.8cqw solid #111;background:var(--yellow);padding:2.2cqw 3cqw;text-align:center}
+.warn .tab{font-size:8.4cqw}
+.warn .ml{font-family:var(--display);font-weight:800;font-style:italic;font-size:5.2cqw;margin-top:1.2cqw}
+.warn .tr{font:600 2.5cqw/1.3 var(--body);margin-top:1cqw;letter-spacing:.06em;text-transform:uppercase}
+.gym-r .row{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2cqw;height:66cqw;margin:4cqw 0 3cqw}
+.gym-r .row .x img{object-position:50% 30%}
+.gym-r .row .y img{object-position:50% 35%}
+.gym-r .row .z img{object-position:85% 15%}
+.gym-r .row .w img{object-position:50% 40%}
+.gym-r ul{list-style:none}
+.gym-r li{font-size:2.8cqw;padding:.7cqw 0;border-bottom:.2cqw solid #cfc6b8;display:flex;gap:2cqw}
+.gym-r li b{font-family:var(--tab);font-weight:400;color:var(--red);min-width:6cqw}
+
+/* ---------- 12-13 busy ---------- */
+.busy-l .in{padding-top:6cqw}
+.busy-l .tab.h{font-size:10.6cqw;margin:1.6cqw 0 3cqw}
+.busy-l .tab.h em{font-style:normal;color:var(--red)}
+.busy-l .ph{flex:1;min-height:0}
+.busy-l .ph img{object-position:50% 50%}
+.busy-r .strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2cqw;height:40cqw;margin-bottom:4cqw}
+.busy-r .strip img{object-position:50% 25%}
+.sched{border-top:.6cqw solid var(--ink)}
+.sched h3{font-family:var(--display);font-weight:800;font-size:5.4cqw;margin:2cqw 0 1.4cqw}
+.sched div{display:grid;grid-template-columns:17cqw 1fr;gap:2cqw;font-size:2.85cqw;padding:1cqw 0;border-bottom:.2cqw dotted #8f877b}
+.sched div b{font-family:var(--tab);font-weight:400;font-size:3.1cqw;letter-spacing:.02em}
+.sched div.last b{color:var(--red)}
+
+/* ---------- 14-15 mirror ---------- */
+.mir{background:#efe6f0}
+.mir-l h2{font-family:var(--display);font-weight:900;font-size:11cqw;line-height:.88;letter-spacing:-.02em;margin:2cqw 0 1cqw}
+.mir-l h2 .flip{display:inline-block;transform:scaleX(-1);color:var(--red)}
+.mir .arch{border-radius:50cqw 50cqw 1.4cqw 1.4cqw;overflow:hidden;border:1cqw solid var(--gold);box-shadow:0 1cqw 2.4cqw rgba(60,40,60,.2)}
+.mir-l .trio{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;height:76cqw;margin:3cqw 0 3cqw}
+.mir .arch img{object-position:50% 35%}
+.mir-r .trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3cqw;height:40cqw;margin-top:auto}
+.mir-r .top{display:grid;grid-template-columns:38cqw 1fr;gap:4cqw;margin-bottom:3cqw}
+.mir-r .dump{height:66cqw;border:1cqw solid #fff;box-shadow:0 1cqw 2.4cqw rgba(60,40,60,.2);transform:rotate(-2deg)}
+.mir-r .dump img{object-position:50% 50%}
+.mir-r .q{text-align:left;font-size:4.4cqw}
+.mir-r .log div{flex-direction:column;gap:.2cqw;font-size:2.6cqw;padding:.8cqw 0;border-bottom:.2cqw dotted #cbb}
+.mir-r .q{font-family:var(--display);font-style:italic;font-weight:600;font-size:5cqw;line-height:1.2;text-align:center;margin-bottom:3cqw}
+.mir-r .q b{font-style:normal;color:var(--red)}
+.log{background:#fff;padding:2.6cqw 3.2cqw;border-left:1cqw solid var(--gold)}
+.log div{font-size:2.8cqw;padding:.7cqw 0;display:flex;justify-content:space-between;gap:2cqw}
+.log div span:last-child{font-weight:600;text-align:right}
+
+/* ---------- 16-17 closing ---------- */
+.close-l{background:#1c1714}
+.collage{position:absolute;inset:0}
+.collage .p{position:absolute;border:1.2cqw solid #fbf7ef;border-bottom-width:5cqw;box-shadow:0 1.4cqw 3cqw rgba(0,0,0,.5);background:#fbf7ef}
+.collage .p img{height:100%}
+.collage .p1{left:6cqw;top:7cqw;width:44cqw;height:60cqw;transform:rotate(-5deg)}
+.collage .p1 img{object-position:50% 40%}
+.collage .p2{right:5cqw;top:12cqw;width:42cqw;height:54cqw;transform:rotate(4deg)}
+.collage .p2 img{object-position:50% 35%}
+.collage .p3{left:9cqw;top:72cqw;width:40cqw;height:46cqw;transform:rotate(3deg)}
+.collage .p3 img{object-position:40% 30%}
+.collage .p4{right:8cqw;top:70cqw;width:38cqw;height:50cqw;transform:rotate(-4deg)}
+.collage .p4 img{object-position:50% 35%}
+.collage .p span{position:absolute;bottom:-4.2cqw;left:0;right:0;text-align:center;font:600 3.6cqw/1 var(--hand);color:#3b332b}
+.close-r h2{font-family:var(--display);font-weight:900;font-style:italic;font-size:10cqw;line-height:.95;margin:2cqw 0 3.4cqw}
+.close-r p{font-size:3.3cqw;line-height:1.55}
+.close-r .sig{font-family:var(--hand);font-size:7.4cqw;line-height:1.05;margin-top:auto;color:var(--red)}
+.close-r .sig small{display:block;font:italic 2.6cqw/1.3 var(--body);color:var(--muted);margin-top:1cqw}
+
+/* ---------- 18 back ---------- */
+.back .in{align-items:center;justify-content:center;text-align:center;color:#efe4d3}
+.back .t{font-family:var(--display);font-weight:900;font-size:13cqw;line-height:.85;color:#fff}
+.back .s{font:700 2.3cqw/1 var(--body);letter-spacing:.32em;text-transform:uppercase;color:var(--yellow);margin:3cqw 0 9cqw}
+.back .next{font-family:var(--display);font-style:italic;font-size:5cqw;line-height:1.25;max-width:70cqw}
+.back .owner{margin-top:9cqw;border:.3cqw solid #8a7e70;padding:3cqw 5cqw;font:600 2.6cqw/1.5 var(--body);letter-spacing:.2em;text-transform:uppercase}
+.back .owner b{display:block;font-family:var(--hand);font-size:8cqw;letter-spacing:0;text-transform:none;color:#fff;font-weight:600}
+.back .barcode{position:absolute;bottom:7cqw;right:7cqw}
+
+
+/* exhibit B */
+.gifts-l .exb{position:absolute;right:5cqw;top:5cqw;width:34cqw;height:46cqw;border:1.2cqw solid #fff;border-bottom-width:6cqw;background:#fff;transform:rotate(5deg);box-shadow:0 1.2cqw 3cqw rgba(0,0,0,.4)}
+.gifts-l .exb img{object-position:50% 35%}
+.gifts-l .exb span{position:absolute;bottom:-5cqw;left:0;right:0;text-align:center;font:400 3.6cqw/1 var(--tab);letter-spacing:.04em}
+/* diva */
+.diva img{position:absolute;inset:0}
+.diva .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.7) 100%)}
+.diva-1 img{object-position:60% 50%}
+.diva-2 img{object-position:50% 40%}
+.diva .word{position:absolute;left:6cqw;bottom:9cqw;font-family:var(--display);font-weight:900;font-style:italic;font-size:30cqw;line-height:.8;color:#fff;letter-spacing:-.03em;mix-blend-mode:normal;text-shadow:0 .6cqw 3cqw rgba(0,0,0,.35)}
+.diva .word2{position:absolute;left:6cqw;right:6cqw;bottom:9cqw;color:#fff}
+.diva .word2 .kicker{color:var(--yellow)}
+.diva .word2 p{font-family:var(--display);font-style:italic;font-size:5.4cqw;line-height:1.2;margin-top:1.4cqw}
+.diva .tag{position:absolute;top:6cqw;left:6cqw;font:700 2.4cqw/1 var(--body);letter-spacing:.3em;text-transform:uppercase;color:#fff;background:var(--red);padding:1.4cqw 2cqw}
+/* motion */
+.motion{background:#141016;color:#f1e6d6}
+.motion .kicker{color:var(--yellow)}
+.motion h2{font-family:var(--display);font-weight:900;font-style:italic;font-size:10cqw;line-height:.95;color:#fff;margin:1.6cqw 0 1.2cqw}
+.motion .dek{color:#d9ccb8;font-size:3.5cqw}
+.motion .clips{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.4cqw;margin-top:3.6cqw;flex:1;min-height:0}
+.clip{position:relative;border-radius:1.6cqw;overflow:hidden;background:#000;box-shadow:0 1.2cqw 3cqw rgba(0,0,0,.5)}
+.clip video{width:100%;height:100%;object-fit:cover;display:block}
+.clip .lbl{position:absolute;left:2cqw;right:2cqw;bottom:2cqw;font:400 3cqw/1.05 var(--tab);letter-spacing:.04em;color:#fff;text-shadow:0 .3cqw 1cqw rgba(0,0,0,.6)}
+.clip .snd{position:absolute;right:1.6cqw;top:1.6cqw;width:7cqw;height:7cqw;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:3.2cqw;cursor:pointer}
+.motion .live{display:inline-flex;align-items:center;gap:1.2cqw}
+.motion .live i{width:1.8cqw;height:1.8cqw;border-radius:50%;background:var(--red);animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* stethoscopes + modals */
+.steth{border:0;background:none;padding:0;cursor:pointer;display:block;transition:opacity .4s,transform .4s}
+.steth svg{width:100%;height:100%}
+#secret{position:fixed;left:14px;bottom:12px;width:24px;height:24px;color:#cbbfae;opacity:.18;z-index:5}
+#secret:hover,.steth.in-page:hover{opacity:.95;transform:rotate(-14deg) scale(1.2)}
+.steth.in-page{position:absolute;width:4.4cqw;height:4.4cqw;z-index:4}
+.steth.s2{right:3cqw;bottom:2.4cqw;color:#17130f;opacity:.2}
+.steth.s3{left:4cqw;bottom:3.4cqw;color:#efe4d3;opacity:.16}
+.modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;background:rgba(10,8,12,.86);backdrop-filter:blur(6px);padding:16px}
+.modal.open{display:flex}
+.modal .card{position:relative;width:min(760px,100%);max-height:100%;overflow:auto;background:#f5efe3;border-radius:14px;padding:28px 24px 24px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.modal .k{font:700 12px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;color:var(--red)}
+.modal h2{font-family:var(--display);font-weight:900;font-style:italic;font-size:clamp(28px,6vw,46px);line-height:1.05;margin:10px 0 8px;color:var(--ink)}
+.modal p{font-size:16px;color:#4a4037}
+.modal .go{margin-top:20px;background:var(--ink);color:#f5efe3;border:0;border-radius:40px;padding:14px 28px;font:600 16px/1 var(--body);cursor:pointer}
+.modal .go:hover{background:var(--red)}
+.modal .vids{display:none;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.modal .vids.one{grid-template-columns:minmax(0,380px);justify-content:center}
+.modal.show .vids{display:grid}
+.modal.show .go{display:none}
+.modal video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;background:#000;display:block;max-height:64vh}
+.modal .x{position:absolute;top:10px;right:12px;width:36px;height:36px;border:0;border-radius:50%;background:#e5dccb;font-size:18px;cursor:pointer;z-index:2}
+.modal .found{width:min(340px,80%);aspect-ratio:3/4;margin:18px auto 14px;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.25);transform:rotate(-2deg)}
+.modal .found img{object-position:50% 30%}
+.modal h2.ml{font-size:clamp(26px,5.4vw,40px);color:var(--red);margin-top:6px}
+@media (max-width:520px){.modal .vids{grid-template-columns:1fr}}
+
+/* v3 tweaks */
+.motion .clips{display:grid;gap:2.6cqw;margin-top:3cqw;flex:none}
+.motion .clips.four{grid-template-columns:1fr 1fr}
+.motion .clips.two{grid-template-columns:1fr 1fr}
+.motion .clip{aspect-ratio:1/1}
+.motion .clip video{object-position:50% 30%}
+.clip .lbl{font-size:3.2cqw}
+.more{margin-top:3.4cqw;display:flex;align-items:center;gap:3cqw;width:100%;text-align:left;background:#221c24;border:.3cqw solid #3b3240;border-radius:2cqw;padding:2.4cqw;color:#f1e6d6;cursor:pointer;transition:background .2s}
+.more:hover{background:#2e2631}
+.more .th{width:20cqw;height:20cqw;border-radius:1.4cqw;overflow:hidden;flex:none;position:relative}
+.more .th img{object-position:50% 35%}
+.more .th::after{content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:6cqw;color:#fff;background:rgba(0,0,0,.25)}
+.more .tx b{display:block;font-family:var(--display);font-style:italic;font-weight:800;font-size:5.2cqw;line-height:1.1;color:#fff}
+.more .tx span{display:block;font:400 4.4cqw/1.2 var(--tab);color:var(--yellow);margin-top:1cqw;letter-spacing:.04em;text-transform:uppercase}
+.gym-l .big img{object-position:40% 0%}
+.gym-l .shade{background:linear-gradient(180deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.35) 38%,rgba(0,0,0,0) 60%)}
+.gym-l .q{top:6cqw;bottom:auto}
+.gym-l .q .kicker{position:static;color:var(--yellow);margin-bottom:2.4cqw}
+.gym-l .q .tab{font-size:13.5cqw;line-height:.9}
+.gym-r .row{grid-template-columns:22fr 31fr 31fr;grid-template-rows:1fr 1fr;height:72cqw;margin:3.4cqw 0 2.6cqw}
+.gym-r .row .x{grid-column:1;grid-row:1}
+.gym-r .row .z{grid-column:1;grid-row:2}
+.gym-r .row .y{grid-column:2;grid-row:1 / span 2}
+.gym-r .row .w{grid-column:3;grid-row:1 / span 2}
+.gym-r .row .y img{object-position:45% 50%}
+.gym-r .row .w img{object-position:40% 45%}
+.gym-r .row .z img{object-position:60% 25%}
+.busy-r .mom{flex:1;min-height:0;margin-top:3.4cqw}
+.busy-r .mom img{object-position:50% 40%}
+.close-r .sig{font-size:9cqw}
+.back .bp{width:56cqw;height:58cqw;border:1.2cqw solid #f5efe3;box-shadow:0 1.4cqw 3cqw rgba(0,0,0,.5);transform:rotate(-2deg);margin-bottom:6cqw}
+.back .bp img{object-position:55% 70%}
+.back .t{font-size:9.6cqw;line-height:.95}
+.back .s{margin:2.4cqw 0 4.4cqw}
+.back .next{font-size:4.2cqw;max-width:66cqw}
+.back .owner{margin-top:5cqw;padding:2.2cqw 4.5cqw}
+.back .owner b{font-size:7cqw}
+.folio{justify-content:flex-start}
+.page:nth-child(odd) .folio{justify-content:flex-end}
+.page:nth-child(even) .folio{flex-direction:row}
+.folio span:empty{display:none}
+
+.close-r .turn{margin-top:auto;font:400 4.2cqw/1 var(--tab);letter-spacing:.04em;text-transform:uppercase;color:var(--red)}
+.letter{background:#fbf6ec}
+.letter::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent 0 5.2cqw,rgba(120,90,60,.07) 5.2cqw 5.4cqw);pointer-events:none}
+.letter .in{padding:8cqw 8cqw 9cqw}
+.letter .to{font-family:var(--hand);font-weight:600;font-size:10cqw;line-height:1;color:var(--red);margin:2cqw 0 3cqw}
+.letter p{font-size:3.1cqw;line-height:1.55;color:#2a231c;hyphens:manual}
+.letter p+p{margin-top:2.4cqw}
+.letter p em{font-family:var(--display);font-weight:800;color:var(--red)}
+.letter .lines{font-family:var(--display);font-style:italic;font-size:3.5cqw;line-height:1.45}
+.letter .end{color:var(--red);font-weight:600}
+.letter .sig{font-family:var(--hand);font-weight:600;font-size:9cqw;color:var(--red);margin-top:auto}
+
+.letter .lp{float:right;width:31cqw;height:44cqw;margin:0 0 2.4cqw 3.6cqw;border:1.1cqw solid #fff;border-bottom-width:4.5cqw;background:#fff;box-shadow:0 1cqw 2.4cqw rgba(60,40,20,.22);transform:rotate(2.5deg)}
+.letter .lp img{object-position:30% 40%}
+.letter .in{display:block}
+.letter .in:has(.sig){display:flex}
+
+/* v5 */
+.steth.inl{display:inline-block;width:5.2cqw;height:5.2cqw;vertical-align:-.5cqw;color:var(--ink);opacity:.3;margin-left:1cqw}
+.steth.inl:hover{opacity:.95;transform:rotate(-14deg) scale(1.2)}
+.motion .clips.two .clip{aspect-ratio:9/16;background:#000}
+.motion .clips.two .clip video{object-fit:contain}
+.motion .clips.two{margin-top:3cqw}
+.more{margin-top:auto;padding:1.6cqw 2cqw;gap:2.4cqw;border-radius:1.6cqw}
+.more .th{width:11cqw;height:11cqw}
+.more .th::after{font-size:3.6cqw}
+.more .tx b{font-size:3.6cqw;display:inline}
+.more .tx span{display:inline;font-size:3.2cqw;margin-left:1cqw}
+.gym-r .row{grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr}
+.gym-r .row .z,.gym-r .row .y,.gym-r .row .w{grid-column:auto;grid-row:auto}
+.gym-r .row .z img{object-position:55% 30%}
+.offd img,.mirf img,.letter-ph img{position:absolute;inset:0}
+.offd .shade,.mirf .shade,.letter-ph .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 58%,rgba(0,0,0,.72) 100%)}
+.offd-1 img{object-position:50% 60%}
+.offd-2 img{object-position:45% 40%}
+.offd .cap2{position:absolute;left:6cqw;right:6cqw;bottom:9cqw;color:#fff}
+.offd .cap2 .kicker{color:var(--yellow)}
+.offd .cap2 p{font-family:var(--display);font-style:italic;font-size:5.4cqw;line-height:1.2;margin-top:1.4cqw}
+.mirf-1 .shade{background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 34%,rgba(0,0,0,0) 66%,rgba(0,0,0,.7) 100%)}
+.mirf-1 img{object-position:50% 100%}
+.page.mirf-1 .head{top:auto;bottom:24.5cqw}
+.page.mirf-1 .shade{background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.82) 100%)}
+.mirf .head{position:absolute;top:6cqw;left:6cqw;right:6cqw;color:#fff}
+.mirf .head .kicker{color:var(--yellow)}
+.mirf .head h2{font-family:var(--display);font-weight:900;font-size:13cqw;line-height:.9;letter-spacing:-.02em;margin-top:1.6cqw}
+.mirf .head .flip{display:inline-block;transform:scaleX(-1);color:#ffb3bb}
+.mirf .dek2{position:absolute;left:6cqw;right:6cqw;bottom:9cqw;font-family:var(--display);font-style:italic;font-size:5cqw;line-height:1.25;color:#fff}
+.mirf-3 img{object-position:50% 45%}
+.mirf .q3{position:absolute;left:6cqw;right:6cqw;bottom:9cqw;font-family:var(--display);font-style:italic;font-weight:600;font-size:6cqw;line-height:1.2;color:#fff}
+.mirf .q3 b{font-style:normal;color:#ffb3bb}
+.mir .duo{display:grid;grid-template-columns:1fr 1fr;gap:4cqw;height:88cqw;margin-bottom:5cqw}
+.mir .duo.small{height:56cqw;margin:auto 0 0}
+.mir-two p.dek{margin-bottom:2cqw}
+.mir-r .top{grid-template-columns:44cqw 1fr;align-items:center}
+.mir-r .dump{height:58cqw}
+.mir-r .log div{font-size:2.8cqw}
+.letter-ph img{object-position:30% 45%}
+.letter-ph .hb{position:absolute;left:6cqw;right:6cqw;bottom:9cqw;font-family:var(--hand);font-weight:600;font-size:12cqw;line-height:1;color:#fff;text-shadow:0 .4cqw 2cqw rgba(0,0,0,.4)}
+.letter .in{display:flex}
+.letter .to{font-size:9cqw;margin:0 0 2.6cqw}
+.letter p{font-size:3.05cqw;line-height:1.55}
+.letter p+p{margin-top:2.2cqw}
+.letter .lines{font-size:3.35cqw}
+.letter .sig{font-size:8cqw;margin-top:auto}
+
+/* v6 */
+.fpg img{position:absolute;inset:0}
+.page.letter .in{padding:5.5cqw 7.5cqw 8.5cqw}
+.page.letter .to{font-size:8.4cqw;margin:0 0 2cqw}
+.page.letter p{font-size:2.95cqw;line-height:1.5}
+.page.letter p+p{margin-top:1.9cqw}
+.page.letter .lines{font-size:3.2cqw}
+.page.letter .sig{font-size:7.4cqw;margin-top:2.4cqw;line-height:1.1}
+
+/* v8 */
+.fpg .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.72) 100%)}
+.fpg .fpcap{position:absolute;left:6cqw;right:6cqw;bottom:9cqw;color:#fff}
+.fpg .tag{display:inline-block;font:700 2.4cqw/1 var(--body);letter-spacing:.3em;text-transform:uppercase;color:#fff;background:var(--red);padding:1.4cqw 2cqw;margin-bottom:2.4cqw}
+.fpg .w{font-family:var(--display);font-weight:900;font-style:italic;line-height:.86;letter-spacing:-.03em;text-shadow:0 .6cqw 3cqw rgba(0,0,0,.35)}
+.mir-r .dumpc{display:flex;justify-content:center;margin-top:1cqw}
+.mir-r .dumpc .dump{width:50cqw;height:66cqw}
+.mir-r .duo.small{height:46cqw}
+
+.fpg video.fpv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+@media (max-width:700px){ .hint{font-size:12px} body{gap:10px} .stage{width:min(94vw, calc((100vh - 80px) / 1.4))} }
+</style>
+</head>
+<body>
+<div class="stage"><div id="book">
+
+<!-- 1 COVER -->
+<div class="page hard cover" data-density="hard">
+  <img src="img/cover.jpg" alt="Nandana on the cover, standing by the lake">
+  <div class="shade"></div>
+  <div class="mast">
+    <div class="s"><span>Vol. 01</span><span>The Birthday Issue</span><span>2026</span></div>
+    <div class="t">NANDANA</div>
+    <div class="s"><span>Annual</span><span>Price: Priceless</span></div>
+  </div>
+  <div class="side">
+    <div class="tab">Dr.</div>
+    <div>It's official. She's a doctor now. Act accordingly.</div>
+  </div>
+  <div class="lines">
+    <div class="big">The <b>Kidilam</b> Issue</div>
+    <div class="sm">Why she cries at gifts<span>&amp; why she's completely wrong</span></div>
+    <div class="sm">Her &amp; the mirror<span>an inseparable love story</span></div>
+  </div>
+  <div class="bottom">
+    <div class="badge">First edition<br>Copy 1 of 1</div>
+    <div class="barcode"><i></i>NA-0001-2026</div>
+  </div>
+</div>
+
+<div class="page ed">
+  <div class="border"></div>
+  <div class="in">
+    <div class="kicker">Collector's Certificate</div>
+    <h2>First Edition</h2>
+    <div class="num">Copy No. 001 of 001</div>
+    <div class="portrait frame"><img src="img/first-edition.jpg" alt="Nandana mirror selfie with a flower in her hair"></div>
+    <p>This is the first, last and only printing of <em>Nandana Annual</em>. There are no other copies. There will be no reprints. It cannot be bought, sold, exchanged or refused.</p>
+    <p>Made for exactly one reader. You're holding it.</p>
+  </div>
+  <div class="stamp"><span>One of</span><b>A KIND</b><span>Certified</span></div>
+</div>
+
+<div class="page toc">
+  <div class="in">
+    <div class="kicker">In this issue</div>
+    <h2>Con&shy;tents<em>.</em></h2>
+    <ol>
+      <li><span class="n">05</span><div><div class="t">Meet Nandana</div><div class="d">Kind, emotional, hilarious. A profile.</div></div></li>
+      <li><span class="n">07</span><div><div class="t">Breaking: She's a Doctor</div><div class="d">MBBS done. House surgency underway.</div></div></li>
+      <li><span class="n">08</span><div><div class="t">The Gift Crisis</div><div class="d">An investigation into tears and nonsense.</div></div></li>
+      <li><span class="n">10</span><div><div class="t">Kidilam</div><div class="d">Dressing up, dancing, unbothered.</div></div></li>
+      <li><span class="n">12</span><div><div class="t">Diva</div><div class="d">Full-page proof. No further questions.</div></div></li>
+      <li><span class="n">14</span><div><div class="t">Kidilam, in Motion</div><div class="d">The dance tapes. Press play.</div></div></li>
+      <li><span class="n">16</span><div><div class="t">Nee Po Mone Dinesha</div><div class="d">A public safety notice from the gym.</div></div></li>
+      <li><span class="n">18</span><div><div class="t">Overworked &amp; Overkind</div><div class="d">Her job, and everyone else's too.</div></div></li>
+      <li><span class="n">22</span><div><div class="t">Her &amp; the Mirror</div><div class="d">A love story for the ages.</div></div></li>
+    </ol>
+  </div>
+  <div class="folio"><span></span><span>03</span></div>
+</div>
+
+<div class="page full fpg">
+  <video class="fpv" src="vid/quick-change.mp4" poster="vid/quick-change.jpg" muted loop playsinline autoplay preload="auto"></video>
+  <div class="shade"></div>
+  <div class="fpcap"><div class="tag">Cover Girl</div><div class="w" style="font-size:24cqw">Iconic.</div></div>
+  <div class="folio" style="color:#eee"><span></span><span>04</span></div>
+</div>
+
+<div class="page intro">
+  <div class="in">
+    <div class="hero frame"><img src="img/intro.jpg" alt="Nandana smiling in the car"></div>
+    <div class="kicker">Cover Story</div>
+    <h2 class="hed">Meet Nandana.</h2>
+    <div class="cols">
+      <p class="drop">She is, by every available measure, one of the good ones. Kind-hearted to a fault, impossibly lovable, and the kind of person who remembers how you were feeling last week.</p>
+      <p>She also gets emotional at record speed. A sad reel, a kind word, a slightly sentimental song: tears. Scientists have stopped timing it.</p>
+      <p>But here's the thing. She's genuinely funny, and she chooses to be happy, even on the days that make it hard. That's rarer than it sounds.</p>
+      <p>Capable, stubborn, soft and strong all at once, she is the reason this magazine exists.</p>
+    </div>
+    <div class="tags"><span>Kind-hearted</span><span>Lovable</span><span>Funny</span><span>Emotional (very)</span><span>Capable</span></div>
+  </div>
+  <div class="folio"><span></span><span>05</span></div>
+</div>
+
+<div class="page full fpg">
+  <img src="img/fp-stripes.jpg" alt="Mirror selfie in a striped crochet dress" style="object-position:50% 60%">
+  <div class="shade"></div>
+  <div class="fpcap"><div class="tag">Spotted</div><div class="w" style="font-size:17cqw">Main<br>Character.</div></div>
+  <div class="folio" style="color:#eee"><span></span><span>06</span></div>
+</div>
+
+<div class="page news">
+  <div class="in">
+    <div class="flag">
+      <div class="nm">The Nandana Times</div>
+      <div class="meta"><span>Late Edition</span><span>2026</span><span>Free, Forever</span></div>
+    </div>
+    <div><span class="brk">Breaking News</span></div>
+    <h2 class="tab">Local Girl Clears MBBS, Is Now Officially “Dr.”</h2>
+    <div class="grid">
+      <div>
+        <p class="drop">After years of exams, ward rounds, all-nighters and repeated claims that she was “definitely going to fail”, Nandana has completed her MBBS and is now a fully fledged doctor.</p>
+        <p>She is currently doing her house surgency, where sources report she is excellent, exhausted, and somehow still checking on everyone else.</p>
+        <p>Family and friends describe themselves as “unbearably proud” and “not surprised at all.”</p>
+      </div>
+      <div>
+        <div class="ph frame"><img src="img/doctor.jpg" alt="Nandana in green scrubs taking a mirror selfie"></div>
+        <div class="stats">
+          <div><span>Exams she said she'd fail</span><b>ALL</b></div>
+          <div><span>Final result</span><b>PASSED</b></div>
+          <div><span>Proud people</span><b>∞</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span></span><span>07</span></div>
+</div>
+
+<div class="page full gifts-l">
+  <img src="img/gifts.jpg" alt="Nandana reacting dramatically on a couch">
+  <div class="exb"><img src="img/gifts-crazy.jpg" alt="Nandana with arms flung out under a stone arch"><span>Exhibit B</span></div>
+  <div class="label">
+    <div class="tab">Exhibit A</div>
+    <p>Subject photographed moments after hearing the word “gift.” Exhibit B: moments after being told she deserves one.</p>
+  </div>
+  <div class="folio" style="color:#fff"><span></span><span>08</span></div>
+</div>
+
+<div class="page gifts-r">
+  <div class="in">
+    <div class="kicker">Investigation</div>
+    <h2 class="tab h">Woman Refuses All Gifts, <em>Cries on Contact</em></h2>
+    <p class="drop">Mention a present in front of Nandana and you'll see it: the wobbly lip, the “no no no, why would you,” the tears arriving before the gift does.</p>
+    <p>Her stated reason? She believes nobody likes her enough to put in effort for her.</p>
+    <p>This publication has investigated that claim thoroughly. We have reviewed the evidence, consulted the experts and looked at the facts. Our conclusion: it is complete and total nonsense.</p>
+    <div class="box">
+      <span class="kicker">Editor's Note</span>
+      <p>You deserve effort. Lots of it. You're crazy to think otherwise. This entire magazine is effort, so deal with it.</p>
+    </div>
+    <div class="tissue"><span>Reader advisory: keep tissues within reach for the rest of this issue.</span></div>
+  </div>
+  <div class="folio"><span></span><span>09</span></div>
+</div>
+
+<div class="page glam-r">
+  <div class="in">
+    <div class="grid">
+      <div class="a frame"><img src="img/glam-lights.jpg" alt="Nandana in black under fairy-light arches"></div>
+      <div class="b frame"><img src="img/glam-sequin.jpg" alt="Nandana mid-dance in a sequin top"></div>
+      <div class="c frame"><img src="img/glam-lakeside.jpg" alt="Nandana in a striped dress by the lake"></div>
+    </div>
+    <div class="look">Fairy lights · Sequins · Lakeside stripes</div>
+    <h3>Dressed up, dancing, unbothered. <button class="steth inl" data-open="special" aria-label="A hidden stethoscope"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5v5.5a4.5 4.5 0 0 0 9 0V2.5"/><path d="M3 2.5h3M12 2.5h3"/><path d="M9 12.5v2.5a4.5 4.5 0 0 0 9 0v-3"/><circle cx="18" cy="9.5" r="2.4"/></svg></button></h3>
+    <p>Every outfit is an event. Every song is a cue. Saree, sequins or a sundress, she shows up fully committed. One word covers it, and it's on the opposite page.</p>
+  </div>
+  <div class="folio"><span></span><span>10</span></div>
+</div>
+
+<div class="page full glam-l">
+  <div class="big"><img src="img/glam-blue-saree.jpg" alt="Nandana in a blue silk saree"></div>
+  <div class="shade"></div>
+  <div class="word">Kidilam</div>
+  <div class="sub">The Style &amp; Dance Report</div>
+  <div class="inset"><img src="img/glam-kasavu.jpg" alt="Nandana in a cream kasavu saree"></div>
+  <div class="note"><p>She dresses up. She dances. Give her the right song and she'll do both at the same time.</p></div>
+  <div class="folio" style="color:#e9dcc7"><span></span><span>11</span></div>
+</div>
+
+<div class="page full diva diva-1">
+  <img src="img/diva-1.jpg" alt="Nandana in a cream kasavu saree by the window">
+  <div class="shade"></div>
+  <div class="tag">Diva Watch</div>
+  <div class="word">Diva.</div>
+  <div class="folio" style="color:#eee"><span></span><span>12</span></div>
+</div>
+
+<div class="page full diva diva-2">
+  <img src="img/diva-2.jpg" alt="Nandana in a pink dress, mirror selfie">
+  <div class="shade"></div>
+  <div class="word2">
+    <div class="kicker">Dressing Up</div>
+    <p>Getting ready is a sport. She is a professional athlete.</p>
+  </div>
+  <div class="folio" style="color:#eee"><span></span><span>13</span></div>
+</div>
+
+<div class="page motion">
+  <div class="in">
+    <div class="kicker live"><i></i>Now Playing</div>
+    <h2>Kidilam, in motion.</h2>
+    <p class="dek">Photos weren't enough. Tap 🔇 on any clip for sound.</p>
+    <div class="clips four">
+      <div class="clip"><video src="vid/dance-saree.mp4" poster="vid/dance-saree.jpg" muted loop playsinline autoplay preload="metadata"></video><button class="snd" aria-label="Toggle sound">🔇</button><span class="lbl">Saree Mode</span></div>
+      <div class="clip"><video src="vid/breakdance.mp4" poster="vid/breakdance.jpg" muted loop playsinline autoplay preload="metadata"></video><button class="snd" aria-label="Toggle sound">🔇</button><span class="lbl">Breakdown → Breakdance</span></div>
+      <div class="clip"><video src="vid/dressing-up.mp4" poster="vid/dressing-up.jpg" muted loop playsinline autoplay preload="metadata"></video><button class="snd" aria-label="Toggle sound">🔇</button><span class="lbl">Dressing Up</span></div>
+      <div class="clip"><video src="vid/quick-change.mp4" poster="vid/quick-change.jpg" muted loop playsinline autoplay preload="metadata"></video><button class="snd" aria-label="Toggle sound">🔇</button><span class="lbl">Fit Check</span></div>
+    </div>
+  </div>
+  <div class="folio" style="color:#8f8478"><span></span><span>14</span></div>
+</div>
+
+<div class="page motion">
+  <div class="in">
+    <div class="kicker live"><i></i>Main Stage</div>
+    <h2>The encore.</h2>
+    <p class="dek">One more song. Always one more song.</p>
+    <div class="clips two">
+      <div class="clip"><video src="vid/dance-crop.mp4" poster="vid/dance-crop.jpg" muted loop playsinline autoplay preload="metadata"></video><button class="snd" aria-label="Toggle sound">🔇</button><span class="lbl">Main Stage</span></div>
+      <div class="clip"><video src="vid/good-one.mp4" poster="vid/good-one.jpg" muted loop playsinline autoplay preload="metadata"></video><button class="snd" aria-label="Toggle sound">🔇</button><span class="lbl">That Smile</span></div>
+    </div>
+    <button class="more" data-open="more">
+      <span class="th"><img src="vid/more-dance.jpg" alt=""></span>
+      <span class="tx"><b>For more dance videos,</b><span>click here →</span></span>
+    </button>
+  </div>
+  <div class="folio" style="color:#8f8478"><span></span><span>15</span></div>
+</div>
+
+<div class="page full gym-l">
+  <div class="big"><img src="img/gym-power.jpg" alt="Nandana mirror selfie in a fitted top, side profile"></div>
+  <div class="shade"></div>
+  <div class="q">
+    <div class="kicker">Fitness · Public Safety</div>
+    <div class="tab">Nee Po Mone<br><span>Dinesha.</span></div>
+    <div class="src">— The attitude she brings to the gym, every single day.</div>
+  </div>
+  <div class="folio" style="color:#bbb"><span></span><span>16</span></div>
+</div>
+
+<div class="page gym-r">
+  <div class="in">
+    <div class="hazard"></div>
+    <div class="warn">
+      <div class="tab">⚠ Warning</div>
+      <div class="ml">“Kalicha nalla idi thirich kittum.”</div>
+      <div class="tr">Mess around and you will find out</div>
+    </div>
+    <div class="row">
+      <div class="y frame"><img src="img/gym-red.jpg" alt="Nandana in a black and red dress, mirror selfie"></div>
+      <div class="w frame"><img src="img/gym-mirror.jpg" alt="Nandana in gym wear, mirror selfie"></div>
+      <div class="z frame"><img src="img/glam-sequin.jpg" alt="Nandana with a confident smile"></div>
+    </div>
+    <ul>
+      <li><b>01</b><span>Certified gym freak. Rest days are a rumour.</span></li>
+      <li><b>02</b><span>Looks sweet. Is sweet. Will still win.</span></li>
+      <li><b>03</b><span>Doctor by day, threat by gym session.</span></li>
+    </ul>
+  </div>
+  <div class="folio"><span></span><span>17</span></div>
+</div>
+
+<div class="page busy-l">
+  <div class="in">
+    <div class="kicker">Workplace Report</div>
+    <h2 class="tab h">Doctor Found Doing Her Own Job — <em>And Everyone Else's</em></h2>
+    <div class="ph frame"><img src="img/busy-36hrs.jpg" alt="Mirror selfie captioned 'Ran back home after 36 hrs'"></div>
+    <div class="cap">Field evidence, in her own words: “Ran back home after 36 hrs.”</div>
+  </div>
+  <div class="folio"><span></span><span>18</span></div>
+</div>
+
+<div class="page busy-r">
+  <div class="in">
+    <div class="strip">
+      <div class="frame"><img src="img/busy-kurta.jpg" alt="Nandana in a printed kurta, mirror selfie"></div>
+      <div class="frame"><img src="img/busy-white.jpg" alt="Nandana in a white top, mirror selfie"></div>
+      <div class="frame"><img src="img/busy-bag.jpg" alt="Nandana with her tote bag, mirror selfie"></div>
+    </div>
+    <p>She's flat out with house surgency, and still somehow taking on other people's work too, because she can't say no to anyone who needs help.</p>
+    <div class="mom frame"><img src="img/with-mom.jpg" alt="Nandana with her mother on a hilltop"></div>
+    <div class="cap">Rare sighting: off duty, with Mom.</div>
+  </div>
+  <div class="folio"><span></span><span>19</span></div>
+</div>
+
+<div class="page full offd offd-1">
+  <img src="img/off-rocks.jpg" alt="Nandana in a maroon dress sitting on beach rocks">
+  <div class="shade"></div>
+  <div class="cap2"><div class="kicker">Off Duty</div><p>Doctor's orders: sit somewhere pretty and do absolutely nothing.</p></div>
+  <div class="folio" style="color:#eee"><span></span><span>20</span></div>
+</div>
+
+<div class="page full offd offd-2">
+  <img src="img/off-forest.jpg" alt="Nandana in the sun among tall trees">
+  <div class="shade"></div>
+  <div class="cap2"><div class="kicker">Prescription</div><p>Sunshine, twice daily. No refills needed.</p></div>
+  <div class="folio" style="color:#eee"><span></span><span>21</span></div>
+</div>
+
+<div class="page full mirf mirf-1">
+  <img src="img/mirror-5.jpg" alt="Nandana in a hall of mirrors">
+  <div class="shade"></div>
+  <div class="head">
+    <div class="kicker">Romance</div>
+    <h2>Her &amp; the <span class="flip">Mirror</span></h2>
+  </div>
+  <p class="dek2">A love story for the ages. Wherever she goes, it goes.</p>
+  <div class="folio" style="color:#eee"><span></span><span>22</span></div>
+</div>
+
+<div class="page mir mir-two">
+  <div class="in">
+    <div class="duo">
+      <div class="arch"><img src="img/mirror-1.jpg" alt="Mirror selfie in a red top"></div>
+      <div class="arch"><img src="img/mirror-2.jpg" alt="Mirror selfie in a rust ruffled top"></div>
+    </div>
+    <p class="dek">Exhibits 1 and 2 of approximately infinity.</p>
+    <p>Our researchers set out to find a single photograph of Nandana not taken in a mirror. The search continues.</p>
+  </div>
+  <div class="folio"><span></span><span>23</span></div>
+</div>
+
+<div class="page full fpg">
+  <img src="img/fp-pink.jpg" alt="Mirror selfie in a pink top" style="object-position:50% 55%">
+  <div class="shade"></div>
+  <div class="fpcap"><div class="tag">Mirror, Mirror</div><div class="w" style="font-size:14.5cqw">Unbothered.</div></div>
+  <div class="folio" style="color:#eee"><span></span><span>24</span></div>
+</div>
+
+<div class="page full fpg">
+  <img src="img/fp-white.jpg" alt="Mirror selfie in a white sundress" style="object-position:50% 45%">
+  <div class="shade"></div>
+  <div class="fpcap"><div class="tag">Sunday Best</div><div class="w" style="font-size:15.5cqw">Effortless.</div></div>
+  <div class="folio" style="color:#eee"><span></span><span>25</span></div>
+</div>
+
+<div class="page full mirf mirf-3">
+  <img src="img/mirror-6.jpg" alt="Full-length mirror selfie in a hotel room">
+  <div class="shade"></div>
+  <div class="q3">Scientists now believe Nandana exists <b>primarily as a reflection.</b></div>
+  <div class="folio" style="color:#eee"><span></span><span>26</span></div>
+</div>
+
+<div class="page mir mir-r">
+  <div class="in">
+    <div class="dumpc"><div class="dump"><img src="img/mirror-dump.jpg" alt="Her own 'mirror dump' collage of four mirror selfies"></div></div>
+    <div class="duo small">
+      <div class="arch"><img src="img/mirror-3.jpg" alt="Mirror selfie in a striped crochet top"></div>
+      <div class="arch"><img src="img/mirror-4.jpg" alt="Mirror selfie in a white lace top"></div>
+    </div>
+  </div>
+  <div class="folio"><span></span><span>27</span></div>
+</div>
+
+<div class="page close-r">
+  <div class="in">
+    <div class="kicker">Last Word</div>
+    <h2>Dear Dr. Nandana,</h2>
+    <p>If you've made it this far without crying, we failed. Hopefully we didn't.</p>
+    <p>Here's what this whole magazine is trying to say: you are loved. Properly, loudly, put-in-the-effort loved. You've worked so hard to get here, and you're kinder to everyone else than you are to yourself.</p>
+    <p>So be a little kinder to you. Accept the gifts. Take the compliments. Keep dancing, keep dressing up, keep being ridiculous, and keep that smile on.</p>
+    <p>Happy birthday, Doctor. This is only Volume One.</p>
+    <div class="turn">One more thing. Keep turning →</div>
+  </div>
+  <div class="folio"><span></span><span>28</span></div>
+</div>
+
+<div class="page full close-l">
+  <div class="collage">
+    <div class="p p1"><img src="img/close-couch.jpg" alt="Nandana on a pink velvet couch"><span>soft era</span></div>
+    <div class="p p2"><img src="img/close-jhumka.jpg" alt="Nandana smiling in jhumkas"><span>that smile</span></div>
+    <div class="p p3"><img src="img/intro.jpg" alt="Nandana in the car"><span>main character</span></div>
+    <div class="p p4"><img src="img/glam-sequin.jpg" alt="Nandana dancing"><span>kidilam</span></div>
+  </div>
+  <div class="folio" style="color:#9b8f80"><span></span><span>29</span></div>
+</div>
+
+<div class="page letter">
+  <div class="in">
+    <div class="to">Kunjus,</div>
+    <p>I don't know how to start this without sounding dramatic, so I'll just say it: you're one of those people who quietly make life better just by being in it. You soften hard days and bring laughter where there wasn't any a moment ago.</p>
+    <p>And this year, you became a <em>doctor</em>. I watched you fight for it: the late-night textbooks, the endless exams, the days your brain was exhausted and your heart still refused to stop. Through all of it you stayed the same kind, joyful, slightly chaotic, always-laughing you. That's rare. Truly rare.</p>
+    <p>I hope this year brings you the kind of happiness that stays, like warm sunlight. I hope you're always surrounded by the people who have been your world. And I hope everyone finally sees what I've always seen: the quiet strength, the spark, the softness, the fire, the light.</p>
+    <p class="lines">Thank you for the laughter, the randomness, and the small moments that end up mattering most. I'm glad our paths crossed, and even happier that they stayed crossed.</p>
+    <p class="lines end">So yeah… Happy Birthday, Kunjus 🤍<br>Keep going. Keep shining.<br>The world is better with you in it.</p>
+    <div class="sig">With love.</div>
+  </div>
+  <div class="folio"><span></span><span>30</span></div>
+</div>
+
+<div class="page full letter-ph">
+  <img src="img/letter-train.jpg" alt="Nandana smiling out of a train window">
+  <div class="shade"></div>
+  <div class="hb">Happy Birthday<br>Kunjus 🤍</div>
+  <div class="folio" style="color:#eee"><span></span><span>31</span></div>
+</div>
+
+<div class="page hard back" data-density="hard">
+  <div class="in">
+    <div class="bp"><img src="img/back-bench.jpg" alt="Nandana sitting on a green garden bench"></div>
+    <div class="t">NANDANA ANNUAL</div>
+    <div class="s">Vol. 01 · 2026 · First Edition</div>
+    <div class="next">Next issue: whenever she finally accepts a gift without crying.</div>
+    <div class="owner">This copy belongs to<b>Dr. Nandana</b></div>
+  </div>
+  <button class="steth in-page s3" data-open="found" aria-label="A hidden stethoscope"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5v5.5a4.5 4.5 0 0 0 9 0V2.5"/><path d="M3 2.5h3M12 2.5h3"/><path d="M9 12.5v2.5a4.5 4.5 0 0 0 9 0v-3"/><circle cx="18" cy="9.5" r="2.4"/></svg></button>
+</div>
+
+</div></div>
+
+<div class="hint">
+  <button id="prev" aria-label="Previous page">‹</button>
+  <span id="pg">Cover</span>
+  <button id="next" aria-label="Next page">›</button>
+  <a href="../index.html" id="hubl">All deliveries</a>
+</div>
+
+<button id="secret" class="steth" data-open="bonus" aria-label="A hidden stethoscope"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5v5.5a4.5 4.5 0 0 0 9 0V2.5"/><path d="M3 2.5h3M12 2.5h3"/><path d="M9 12.5v2.5a4.5 4.5 0 0 0 9 0v-3"/><circle cx="18" cy="9.5" r="2.4"/></svg></button>
+
+<div class="modal" id="m-bonus" data-secret role="dialog" aria-modal="true" aria-label="Bonus clips">
+  <div class="card">
+    <button class="x" aria-label="Close">✕</button>
+    <div class="k">Stethoscope found · <span class="cnt"></span></div>
+    <h2>Ready for your bonus clips?</h2>
+    <p>Strictly classified. Not listed in the contents.</p>
+    <button class="go">Yes, show me</button>
+    <div class="vids">
+      <video src="vid/bonus-1.mp4" poster="vid/bonus-1.jpg" controls loop playsinline preload="none"></video>
+      <video src="vid/bonus-2.mp4" poster="vid/bonus-2.jpg" controls loop playsinline preload="none"></video>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="m-special" data-secret role="dialog" aria-modal="true" aria-label="Special mentions">
+  <div class="card">
+    <button class="x" aria-label="Close">✕</button>
+    <div class="k">Stethoscope found · <span class="cnt"></span></div>
+    <h2>Special mentions</h2>
+    <p>Two clips that deserved a category of their own.</p>
+    <button class="go">Play them</button>
+    <div class="vids">
+      <video src="vid/special-1.mp4" poster="vid/special-1.jpg" controls loop playsinline preload="none"></video>
+      <video src="vid/special-2.mp4" poster="vid/special-2.jpg" controls loop playsinline preload="none"></video>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="m-found" data-secret role="dialog" aria-modal="true" aria-label="Final secret">
+  <div class="card">
+    <button class="x" aria-label="Close">✕</button>
+    <div class="k">Stethoscope found · <span class="cnt"></span></div>
+    <div class="found"><img src="img/found-all.jpg" alt="Nandana smiling"></div>
+    <h2 class="ml">Bheegarii, Ellam kandu pidicha?</h2>
+  </div>
+</div>
+
+<div class="modal show" id="m-more" role="dialog" aria-modal="true" aria-label="More dance videos">
+  <div class="card">
+    <button class="x" aria-label="Close">✕</button>
+    <div class="k">Extended Cut</div>
+    <h2>More dance videos</h2>
+    <p>Exam season, according to her: the perfect time to dance.</p>
+    <div class="vids one">
+      <video src="vid/more-dance.mp4" poster="vid/more-dance.jpg" controls loop playsinline preload="none"></video>
+    </div>
+  </div>
+</div>
+
+<script src="js/page-flip.browser.js"></script>
+<script>
+const book = document.getElementById('book');
+const pf = new St.PageFlip(book, {
+  width: 500, height: 700, size: 'stretch',
+  minWidth: 260, maxWidth: 900, minHeight: 364, maxHeight: 1260,
+  showCover: true, usePortrait: true, maxShadowOpacity: 0.45,
+  mobileScrollSupport: false, flippingTime: 900
+});
+pf.loadFromHTML(document.querySelectorAll('.page'));
+const total = pf.getPageCount(), pg = document.getElementById('pg');
+function label(){
+  const i = pf.getCurrentPageIndex();
+  if (i === 0) return pg.textContent = 'Cover';
+  if (i >= total - 1) return pg.textContent = 'Back cover';
+  const portrait = pf.getOrientation() === 'portrait';
+  pg.textContent = portrait ? `Page ${i+1}` : `Pages ${i+1}–${Math.min(i+2,total)}`;
+}
+pf.on('flip', label); pf.on('changeOrientation', label); label();
+document.getElementById('prev').onclick = () => pf.flipPrev();
+document.getElementById('next').onclick = () => pf.flipNext();
+document.querySelectorAll('.snd').forEach(b => b.addEventListener('click', e => {
+  e.stopPropagation();
+  const v = b.parentElement.querySelector('video'), turnOn = v.muted;
+  document.querySelectorAll('.clip video').forEach(o => { o.muted = true; o.parentElement.querySelector('.snd').textContent = '🔇'; });
+  if (turnOn) { v.muted = false; v.play(); b.textContent = '🔊'; }
+}));
+document.querySelectorAll('.clip video, video.fpv').forEach(v => { v.play().catch(()=>{}); });
+function muteAll(){ document.querySelectorAll('.clip video').forEach(o => { o.muted = true; o.parentElement.querySelector('.snd').textContent = '🔇'; }); }
+const found = new Set();
+try { JSON.parse(localStorage.getItem('na-found') || '[]').forEach(x => found.add(x)); } catch (e) {}
+function openModal(name){
+  const m = document.getElementById('m-' + name); if (!m) return;
+  muteAll();
+  if (m.hasAttribute('data-secret')) {
+    found.add(name);
+    try { localStorage.setItem('na-found', JSON.stringify([...found])); } catch (e) {}
+    m.querySelector('.cnt').textContent = found.size + ' of 3';
+  }
+  m.classList.add('open');
+  if (name === 'more') m.querySelector('video').play().catch(()=>{});
+}
+function closeModals(){
+  document.querySelectorAll('.modal.open').forEach(m => {
+    m.classList.remove('open'); if (m.id !== 'm-more') m.classList.remove('show');
+    m.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
+  });
+}
+document.querySelectorAll('[data-open]').forEach(b => {
+  const go = e => { e.preventDefault(); e.stopPropagation(); openModal(b.dataset.open); };
+  b.addEventListener('click', go);
+  b.addEventListener('mousedown', e => e.stopPropagation());
+  b.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+});
+document.querySelectorAll('.modal').forEach(m => {
+  m.querySelector('.x').onclick = closeModals;
+  m.addEventListener('click', e => { if (e.target === m) closeModals(); });
+  const go = m.querySelector('.go');
+  if (go) go.onclick = () => { m.classList.add('show'); const v = m.querySelector('video'); v && v.play().catch(()=>{}); };
+  const vs = m.querySelectorAll('video');
+  vs.forEach(v => v.addEventListener('play', () => vs.forEach(o => { if (o !== v) o.pause(); })));
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModals(); });
+document.addEventListener('keydown', e => { if (e.key === 'ArrowRight') pf.flipNext(); if (e.key === 'ArrowLeft') pf.flipPrev(); });
+</script>
+</body>
+</html>
