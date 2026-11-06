@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>T-minus · Nandana</title>
+<meta name="description" content="Something is arriving at midnight.">
+<meta name="robots" content="noindex, nofollow">
+<script src="../guard.js" data-unlock="2026-11-09T00:00:00+05:30" data-label="9 Nov"></script>
+<style>
+@font-face{font-family:"Fredoka";src:url(fonts/fredoka-latin-wght-normal.woff2) format("woff2");font-weight:300 700;font-display:swap}
+@font-face{font-family:"Caveat";src:url(fonts/caveat-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Anton";src:url(fonts/anton-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+:root{--gold:#ffd66b;--pink:#ff6fa3;--ink:#0d0a1f;--round:"Fredoka",system-ui,sans-serif;--display:"Anton",Impact,sans-serif;--hand:"Caveat",cursive}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:#0d0a1f}
+body{min-height:100vh;color:#fff;font-family:var(--round);background:radial-gradient(ellipse at 50% -10%,#3b2a7a 0%,#1a1240 40%,#0d0a1f 75%);overflow-x:hidden}
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:max(28px,env(safe-area-inset-top)) 18px 50px;text-align:center}
+.kick{display:inline-block;font:700 12px/1 var(--round);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);border:1.5px solid rgba(255,214,107,.5);border-radius:30px;padding:7px 14px}
+h1{font:400 clamp(40px,12vw,68px)/.95 var(--display);letter-spacing:.01em;margin:16px 0 6px;text-transform:uppercase}
+h1 span{color:var(--pink)}
+.sub{font-size:clamp(15px,4.2vw,18px);opacity:.85;max-width:420px;margin:0 auto}
+
+.lock{width:74px;height:84px;margin:26px auto 10px;position:relative}
+.lock .shackle{position:absolute;left:14px;top:0;width:46px;height:46px;border:9px solid var(--gold);border-bottom:0;border-radius:30px 30px 0 0;transition:transform .8s cubic-bezier(.3,1.5,.5,1);transform-origin:right bottom}
+.lock .body{position:absolute;left:0;bottom:0;width:74px;height:50px;background:var(--gold);border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(255,214,107,.45)}
+.lock .body i{width:10px;height:18px;background:#0d0a1f;border-radius:5px}
+.unlocked .lock .shackle{transform:translateY(-12px) rotate(30deg)}
+
+.timer{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0 6px}
+.timer div{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 4px 10px;backdrop-filter:blur(4px)}
+.timer b{display:block;font:400 clamp(40px,12vw,64px)/1 var(--display);color:var(--gold);font-variant-numeric:tabular-nums}
+.timer small{display:block;margin-top:6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.until{font-size:13px;opacity:.65;letter-spacing:.04em}
+
+h2{font:400 clamp(26px,7vw,34px)/1 var(--display);text-transform:uppercase;margin:36px 0 6px;letter-spacing:.02em}
+.hint{font-size:14px;opacity:.75;margin-bottom:16px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 10px;background:linear-gradient(0deg,rgba(13,10,31,.92) 30%,rgba(13,10,31,0));font:600 clamp(17px,4.6vw,21px)/1.15 var(--hand);text-align:left}
+.card .cap b{display:block;font:700 10px/1 var(--round);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.card canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;transition:opacity .6s}
+.card canvas.gone{opacity:0;pointer-events:none}
+.count{margin-top:14px;font-size:14px;opacity:.8}
+
+.foot{margin-top:34px;font:600 22px/1.3 var(--hand);color:var(--gold);opacity:.9}
+.small{font-size:12px;opacity:.5;margin-top:10px}
+
+#open{display:none;margin:22px auto 0;background:linear-gradient(135deg,var(--gold),#ffb347);color:#1a1240;border:0;border-radius:40px;padding:18px 34px;font:700 clamp(18px,5vw,22px)/1 var(--round);box-shadow:0 8px 30px rgba(255,214,107,.45);cursor:pointer;text-decoration:none;animation:glow 1.6s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 8px 50px rgba(255,214,107,.85);transform:scale(1.04)}}
+.unlocked #open{display:inline-block}
+.unlocked .timer,.unlocked .until{display:none}
+.bday{display:none;font:600 clamp(30px,8.4vw,44px)/1.1 var(--hand);color:var(--pink);margin-top:8px}
+.unlocked .bday{display:block}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:5}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="wrap" id="wrap">
+  <span class="kick">Delivery 4 of 5 · 9 Nov</span>
+  <h1>T-minus<br><span>Midnight</span></h1>
+  <p class="sub" id="sub">Your final delivery is locked. It opens at exactly 12:00 AM on your birthday. Not one second earlier.</p>
+
+  <div class="lock" aria-hidden="true"><div class="shackle"></div><div class="body"><i></i></div></div>
+  <div class="bday">Happy Birthday, Kunjus 🤍</div>
+  <div class="timer" id="timer" aria-live="polite">
+    <div><b id="dd">00</b><small>Days</small></div>
+    <div><b id="hh">00</b><small>Hours</small></div>
+    <div><b id="mm">00</b><small>Mins</small></div>
+    <div><b id="ss">00</b><small>Secs</small></div>
+  </div>
+  <p class="until">Unlocks 10 Nov · 12:00 AM (India time)</p>
+  <a id="open" href="#" rel="noopener">Open your gift 📰</a>
+
+  <h2>Scratch for clues</h2>
+  <p class="hint">Can't wait? Scratch the cards with your finger. Six clues about tomorrow.</p>
+  <div class="cards" id="cards"></div>
+  <p class="count" id="count">0 of 6 clues found</p>
+
+  <p class="foot">Five deliveries. One very special person.<br>See you at midnight. ✨</p>
+  <p class="small">Keep this page open. It unlocks by itself.</p>
+  <p style="margin-top:16px"><a href="../index.html" style="color:#ffd66b;font-weight:700">← All deliveries</a></p>
+</div>
+<canvas id="confetti"></canvas>
+
+<script>
+const TARGET = new Date('2026-11-10T00:00:00+05:30').getTime();
+const LINK = '../day5/index.html';
+const TEST = new URLSearchParams(location.search).get('test');   // ?test=unlock previews the midnight state
+const $ = s => document.querySelector(s);
+
+/* ---- stars ---- */
+(function () {
+  const c = $('#stars'), x = c.getContext('2d');
+  let st = [];
+  function size() { c.width = innerWidth * devicePixelRatio; c.height = innerHeight * devicePixelRatio; st = Array.from({ length: 140 }, () => ({ x: Math.random() * c.width, y: Math.random() * c.height, r: Math.random() * 1.6 * devicePixelRatio + .3, p: Math.random() * 6 })); }
+  size(); addEventListener('resize', size);
+  (function t(time) {
+    x.clearRect(0, 0, c.width, c.height);
+    st.forEach(s => { x.globalAlpha = .35 + .65 * Math.abs(Math.sin(time / 1400 + s.p)); x.fillStyle = '#fff'; x.beginPath(); x.arc(s.x, s.y, s.r, 0, 7); x.fill(); });
+    requestAnimationFrame(t);
+  })(0);
+})();
+
+/* ---- countdown ---- */
+let unlocked = false;
+const pad = n => String(n).padStart(2, '0');
+function tick() {
+  const left = TEST === 'unlock' ? 0 : TARGET - Date.now();
+  if (left <= 0) { if (!unlocked) unlock(); return; }
+  const s = Math.floor(left / 1000);
+  $('#dd').textContent = pad(Math.floor(s / 86400));
+  $('#hh').textContent = pad(Math.floor(s % 86400 / 3600));
+  $('#mm').textContent = pad(Math.floor(s % 3600 / 60));
+  $('#ss').textContent = pad(s % 60);
+}
+function unlock() {
+  unlocked = true;
+  $('#wrap').classList.add('unlocked');
+  $('#sub').textContent = "It's midnight. It's your birthday. Your final delivery is ready.";
+  $('#open').href = LINK;
+  document.title = '🎂 Happy Birthday, Nandana';
+  confetti(); setTimeout(confetti, 900);
+}
+tick(); setInterval(tick, 250);
+
+/* ---- scratch cards ---- */
+const CLUES = [
+  ['diva-1', 'Clue 1', 'It has a cover. You are on it.'],
+  ['off-rocks', 'Clue 2', 'It has pages. Lots of them.'],
+  ['close-couch', 'Clue 3', 'You are on almost every single one.'],
+  ['fp-white', 'Clue 4', 'It has secrets. Look for stethoscopes. 🩺'],
+  ['glam-lights', 'Clue 5', 'Only one copy exists in the whole world.'],
+  ['back-bench', 'Clue 6', 'You can flip through it. Like a real one.'],
+];
+let found = 0;
+$('#cards').innerHTML = CLUES.map(([img, k, t], i) =>
+  `<div class="card"><img src="img/${img}.jpg" alt=""><div class="cap"><b>${k}</b>${t}</div><canvas data-i="${i}"></canvas></div>`).join('');
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => document.querySelectorAll('.card canvas').forEach(cv => {
+  const r = cv.getBoundingClientRect(), d = devicePixelRatio || 1;
+  cv.width = r.width * d; cv.height = r.height * d;
+  const x = cv.getContext('2d');
+  const g = x.createLinearGradient(0, 0, cv.width, cv.height);
+  g.addColorStop(0, '#c9a0ff'); g.addColorStop(.5, '#ff9ec7'); g.addColorStop(1, '#ffd66b');
+  x.fillStyle = g; x.fillRect(0, 0, cv.width, cv.height);
+  x.fillStyle = 'rgba(255,255,255,.18)';
+  for (let k = 0; k < 40; k++) { x.beginPath(); x.arc(Math.random() * cv.width, Math.random() * cv.height, (2 + Math.random() * 5) * d, 0, 7); x.fill(); }
+  x.fillStyle = '#1a1240'; x.textAlign = 'center';
+  x.font = `700 ${15 * d}px Fredoka, sans-serif`; x.fillText('SCRATCH ME', cv.width / 2, cv.height / 2);
+  x.font = `${30 * d}px sans-serif`; x.fillText('✨', cv.width / 2, cv.height / 2 - 26 * d);
+  x.globalCompositeOperation = 'destination-out';
+  let down = false, done = false, last = null;
+  const pos = e => { const b = cv.getBoundingClientRect(); return [(e.clientX - b.left) * d, (e.clientY - b.top) * d]; };
+  const draw = (p) => {
+    x.lineWidth = 34 * d; x.lineCap = 'round';
+    x.beginPath(); x.moveTo(...(last || p)); x.lineTo(...p); x.stroke();
+    x.beginPath(); x.arc(p[0], p[1], 17 * d, 0, 7); x.fill();
+    last = p;
+  };
+  const check = () => {
+    if (done) return;
+    const data = x.getImageData(0, 0, cv.width, cv.height).data; let clear = 0, n = 0;
+    for (let k = 3; k < data.length; k += 64) { n++; if (data[k] === 0) clear++; }
+    if (clear / n > .45) { done = true; cv.classList.add('gone'); found++; $('#count').textContent = found === 6 ? 'All 6 clues found. Now you just have to wait. 😌' : `${found} of 6 clues found`; if (found === 6) confetti(); }
+  };
+  cv.addEventListener('pointerdown', e => { down = true; last = null; cv.setPointerCapture(e.pointerId); draw(pos(e)); });
+  cv.addEventListener('pointermove', e => { if (down) draw(pos(e)); });
+  ['pointerup', 'pointercancel'].forEach(t => cv.addEventListener(t, () => { down = false; last = null; check(); }));
+}));
+
+/* ---- confetti ---- */
+function confetti() {
+  const c = $('#confetti'), x = c.getContext('2d'); c.width = innerWidth; c.height = innerHeight;
+  const cols = ['#ffd66b', '#ff6fa3', '#c9a0ff', '#7bdff2', '#fff'];
+  const ps = Array.from({ length: 170 }, () => ({ x: c.width / 2, y: c.height * .35, vx: (Math.random() - .5) * 14, vy: -Math.random() * 13 - 4, s: 5 + Math.random() * 6, r: Math.random() * 6, c: cols[Math.floor(Math.random() * cols.length)] }));
+  let f = 0;
+  (function t() {
+    x.clearRect(0, 0, c.width, c.height);
+    ps.forEach(p => { p.vy += .3; p.x += p.vx; p.y += p.vy; p.r += .2; x.save(); x.translate(p.x, p.y); x.rotate(p.r); x.fillStyle = p.c; x.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); x.restore(); });
+    if (++f < 160) requestAnimationFrame(t); else x.clearRect(0, 0, c.width, c.height);
+  })();
+}
+</script>
+</body>
+</html>

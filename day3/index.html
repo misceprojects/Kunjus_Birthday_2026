@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Patient File · Dr. Nandana</title>
+<meta name="description" content="Confidential. For the patient's eyes only.">
+<meta name="robots" content="noindex, nofollow">
+<script src="../guard.js" data-unlock="2026-11-08T00:00:00+05:30" data-label="8 Nov"></script>
+<style>
+@font-face{font-family:"Courier Prime";src:url(fonts/courier-prime-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Courier Prime";src:url(fonts/courier-prime-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Fredoka";src:url(fonts/fredoka-latin-wght-normal.woff2) format("woff2");font-weight:300 700;font-display:swap}
+@font-face{font-family:"Caveat";src:url(fonts/caveat-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Anton";src:url(fonts/anton-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+:root{--paper:#fdfcf7;--ink:#1d2a33;--muted:#5e6d77;--teal:#0f8b8d;--teal-2:#d8f1ef;--red:#d62839;--blue:#2457a6;--line:#cfd8dc;
+  --type:"Courier Prime",ui-monospace,monospace;--round:"Fredoka",system-ui,sans-serif;--hand:"Caveat",cursive;--display:"Anton",Impact,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#cfe7e4}
+body{min-height:100vh;background:repeating-linear-gradient(45deg,#cfe7e4 0 14px,#c6e0dc 14px 28px);font-family:var(--type);color:var(--ink);padding:18px 12px 60px}
+.clip{max-width:620px;margin:0 auto;position:relative}
+.clipboard{background:#8a5a2b;border-radius:18px;padding:34px 12px 14px;box-shadow:0 14px 40px rgba(0,0,0,.25);position:relative}
+.clipboard::before{content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:120px;height:40px;border-radius:10px;background:linear-gradient(#d9dde0,#9aa3a8);box-shadow:0 3px 0 #6b7479}
+.sheet{background:var(--paper);border-radius:4px;padding:22px 18px 26px;box-shadow:0 2px 0 rgba(0,0,0,.08)}
+
+.hdr{display:flex;align-items:center;gap:12px;border-bottom:3px double var(--ink);padding-bottom:12px}
+.hdr .cross{width:46px;height:46px;flex:none;background:var(--red);clip-path:polygon(35% 0,65% 0,65% 35%,100% 35%,100% 65%,65% 65%,65% 100%,35% 100%,35% 65%,0 65%,0 35%,35% 35%)}
+.hdr h1{font:700 clamp(15px,4.2vw,20px)/1.15 var(--type);letter-spacing:.02em}
+.hdr p{font-size:12px;color:var(--muted);margin-top:2px}
+.conf{display:flex;justify-content:space-between;align-items:center;margin:12px 0 4px;font-size:12px;color:var(--muted)}
+.conf b{color:var(--red);border:2px solid var(--red);padding:2px 8px;transform:rotate(-2deg);letter-spacing:.12em}
+
+section{margin-top:22px;opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+section.seen{opacity:1;transform:none}
+h2{font:700 13px/1 var(--type);letter-spacing:.18em;text-transform:uppercase;color:var(--teal);border-bottom:1.5px solid var(--line);padding-bottom:6px;margin-bottom:10px;display:flex;justify-content:space-between}
+h2 small{color:var(--muted);letter-spacing:.06em;font-weight:400}
+
+.id{display:grid;grid-template-columns:110px 1fr;gap:14px}
+.id .photo{width:110px;height:138px;border:2px solid var(--ink);padding:3px;background:#fff;position:relative}
+.id .photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
+.id .photo::after{content:"PATIENT";position:absolute;bottom:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:10px;padding:1px 6px;letter-spacing:.15em}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:5px 10px;font-size:14px;align-content:start}
+.kv dt{color:var(--muted)}
+.kv dd{font-weight:700}
+
+ol.cc{padding-left:22px;font-size:15px;line-height:1.55}
+ol.cc li::marker{color:var(--red);font-weight:700}
+.hx{font-size:15px;line-height:1.6}
+
+.ecg{background:#06231f;border-radius:8px;padding:10px 12px 8px;margin-bottom:12px;position:relative;overflow:hidden}
+.ecg svg{width:100%;height:70px;display:block}
+.ecg path{fill:none;stroke:#3dff9a;stroke-width:2.2;stroke-dasharray:1200;stroke-dashoffset:1200;filter:drop-shadow(0 0 4px #3dff9a)}
+section.seen .ecg path{animation:draw 3s linear infinite}
+@keyframes draw{to{stroke-dashoffset:0}}
+.ecg .lbl{display:flex;justify-content:space-between;color:#3dff9a;font-size:12px;letter-spacing:.08em}
+.ecg .bpm{font:400 26px/1 var(--display);color:#3dff9a}
+.vit{display:grid;gap:10px}
+.vit .row{display:grid;grid-template-columns:132px 1fr;gap:10px;align-items:center;font-size:14px}
+.vit .bar{height:22px;background:#e7eef0;border-radius:10px;position:relative;overflow:visible}
+.vit .bar i{position:absolute;inset:0 auto 0 0;width:0;border-radius:10px;background:var(--teal);transition:width 1.4s cubic-bezier(.2,1,.3,1)}
+.vit .bar.over i{background:linear-gradient(90deg,var(--teal),var(--red))}
+.vit .bar span{position:absolute;left:10px;top:0;line-height:22px;font-size:11.5px;font-weight:700;color:#fff;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.vit .val{grid-column:2;font-size:12px;color:var(--muted);margin-top:-6px}
+
+.alert{border:2.5px solid var(--red);background:#fff1f2;border-radius:6px;padding:12px 14px;font-size:15px;line-height:1.5}
+.alert b{color:var(--red)}
+.alert .tag{display:inline-block;background:var(--red);color:#fff;font-size:11px;letter-spacing:.14em;padding:2px 8px;margin-bottom:6px}
+
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:7px 6px;border-bottom:1px dashed var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+td.f{color:var(--red);font-weight:700;white-space:nowrap}
+
+.xray{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center}
+.xray .film{aspect-ratio:3/4;background:#000;border-radius:6px;position:relative;overflow:hidden;box-shadow:inset 0 0 0 3px #222}
+.xray .film img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) invert(1) contrast(1.4) brightness(.8);opacity:.75;mix-blend-mode:screen}
+.xray .film .heart{position:absolute;left:50%;top:70%;width:44%;transform:translate(-50%,-50%);animation:beat 1s ease-in-out infinite;filter:drop-shadow(0 0 12px #ff8fa3)}
+@keyframes beat{15%{transform:translate(-50%,-50%) scale(1.18)}30%{transform:translate(-50%,-50%) scale(1)}45%{transform:translate(-50%,-50%) scale(1.12)}}
+.xray .film .tagx{position:absolute;top:6px;left:8px;color:#9fd;font-size:10px;letter-spacing:.1em}
+.xray p{font-size:14px;line-height:1.55}
+.xray p b{color:var(--red)}
+
+.dx{border:2.5px solid var(--ink);padding:14px;position:relative;background:#fff}
+.dx .big{font:400 clamp(22px,6.6vw,32px)/1.05 var(--display);text-transform:uppercase;letter-spacing:.01em;color:var(--blue)}
+.dx p{font-size:14px;margin-top:8px;line-height:1.5}
+.stamp{position:absolute;right:10px;top:-14px;border:3px solid var(--red);color:var(--red);font:700 13px/1 var(--type);letter-spacing:.14em;padding:6px 10px;transform:rotate(8deg) scale(1.6);opacity:0;background:rgba(255,255,255,.85)}
+section.seen .stamp{animation:stamp .5s .6s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes stamp{to{opacity:.92;transform:rotate(8deg) scale(1)}}
+
+.notes{background:#fffbe6;border-left:4px solid #e9c46a;padding:12px 14px;font:600 clamp(22px,5.6vw,27px)/1.3 var(--hand);color:var(--blue)}
+.plan{list-style:none;display:grid;gap:8px;font-size:15px}
+.plan li{display:flex;gap:10px;align-items:center}
+.plan li i{font-style:normal;width:26px;height:26px;flex:none;border:2px solid var(--ink);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700}
+.plan li.done i{background:var(--teal);border-color:var(--teal);color:#fff}
+.plan li.soon{color:var(--muted)}
+.plan li.today b{background:#ffe066;padding:0 4px}
+
+.discharge{display:block;width:100%;margin-top:26px;background:var(--teal);color:#fff;border:0;border-radius:12px;padding:16px;font:700 18px/1 var(--round);letter-spacing:.02em;box-shadow:0 5px 0 #0a5e60;cursor:pointer}
+.discharge:active{transform:translateY(3px);box-shadow:0 2px 0 #0a5e60}
+
+#rx{position:fixed;inset:0;z-index:20;background:rgba(10,30,35,.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:16px}
+#rx.on{display:flex}
+.pad{width:min(420px,100%);background:#fff;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.4);overflow:hidden;animation:slip .7s cubic-bezier(.2,1.3,.4,1)}
+@keyframes slip{from{transform:translateY(60vh) rotate(8deg)}}
+.pad .top{background:var(--teal);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:flex-end;font-size:12px;letter-spacing:.08em}
+.pad .top b{font:700 15px/1.1 var(--type);letter-spacing:.04em}
+.pad .body{padding:16px 18px 18px;background:repeating-linear-gradient(180deg,#fff 0 30px,#eef4f5 30px 31px);position:relative}
+.pad .who{font-size:13px;color:var(--muted);display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:8px}
+.pad .rxsym{font:700 44px/1 var(--type);color:var(--teal)}
+.pad .script{font:600 25px/1.25 var(--hand);color:var(--blue);margin:4px 0 10px}
+.pad .script u{text-decoration-color:var(--red)}
+.pad dl{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:13.5px}
+.pad dt{color:var(--muted)}
+.pad .sig{margin-top:14px;display:flex;justify-content:space-between;align-items:flex-end}
+.pad .sig .s{font:600 30px/1 var(--hand);color:var(--ink);border-bottom:1.5px solid var(--ink);padding:0 10px 2px}
+.pad .sig small{display:block;font-size:11px;color:var(--muted);margin-top:4px;text-align:center}
+.pad .ok{position:absolute;right:16px;top:58px;border:3px solid var(--red);color:var(--red);font:700 14px/1 var(--type);letter-spacing:.14em;padding:6px 10px;transform:rotate(-12deg);opacity:0;animation:stamp2 .5s 1s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes stamp2{from{transform:rotate(-12deg) scale(2)}to{opacity:.9;transform:rotate(-12deg) scale(1)}}
+.pad .next{background:#fff6d6;border-top:1px solid var(--line);padding:12px 16px;font:600 15px/1.35 var(--round);text-align:center}
+.pad .close{display:block;margin:0 auto 14px;background:none;border:2px solid var(--ink);border-radius:30px;padding:8px 18px;font:600 14px/1 var(--round);cursor:pointer}
+footer{text-align:center;font-size:11px;color:#4d6b67;margin-top:18px;letter-spacing:.08em}
+@media (max-width:420px){.vit .row{grid-template-columns:110px 1fr}.id{grid-template-columns:96px 1fr}.id .photo{width:96px;height:122px}.kv{font-size:13px}}
+</style>
+</head>
+<body>
+<div class="clip">
+<div class="clipboard"><div class="sheet">
+
+  <div class="hdr">
+    <div class="cross" aria-hidden="true"></div>
+    <div>
+      <h1>KUNJUS GENERAL HOSPITAL</h1>
+      <p>Department of Birthday Medicine · Est. 10 Nov</p>
+    </div>
+  </div>
+  <div class="conf"><span>Case Sheet · File No. PT-1011</span><b>CONFIDENTIAL</b></div>
+
+  <section>
+    <h2>Patient Details <small>Delivery 3 of 5</small></h2>
+    <div class="id">
+      <div class="photo"><img src="img/doctor.jpg" alt="The patient, in scrubs"></div>
+      <dl class="kv">
+        <dt>Name</dt><dd>Dr. Nandana</dd>
+        <dt>Alias</dt><dd>Kunjus</dd>
+        <dt>Age</dt><dd>Increasing on 10 Nov</dd>
+        <dt>Occupation</dt><dd>Doctor (house surgeon)</dd>
+        <dt>Ward</dt><dd>Mirror Ward, Bed 1</dd>
+        <dt>Admitted</dt><dd>6 Nov (Delivery 1)</dd>
+        <dt>Attending</dt><dd>Dr. Stetho 🩺</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2>Chief Complaints</h2>
+    <ol class="cc">
+      <li>Cries at the mere mention of gifts.</li>
+      <li>Believes nobody likes her enough to put in effort. <i>(Patient is wrong. See Lab Results.)</i></li>
+      <li>Unable to walk past a mirror without stopping.</li>
+      <li>Spontaneous dancing, especially during exam season.</li>
+      <li>Laughs at everything. Including things that are not jokes.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>History of Present Illness</h2>
+    <p class="hx">Patient completed MBBS this year and is currently surviving house surgency. Reports shifts of up to 36 hours, followed by a mirror selfie. Despite chronic overwork, patient remains kind, joyful, slightly chaotic and always laughing. Condition has been stable for years and is not expected to change.</p>
+  </section>
+
+  <section>
+    <h2>Vitals</h2>
+    <div class="ecg">
+      <div class="lbl"><span>ECG · LEAD II</span><span>RHYTHM: KIDILAM</span></div>
+      <svg viewBox="0 0 600 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 H60 l8 -6 8 6 H110 l6 6 8 -36 8 46 6 -10 H190 l10 -8 10 8 H260 l8 -6 8 6 H310 l6 6 8 -36 8 46 6 -10 H390 l10 -8 10 8 H460 l8 -6 8 6 H510 l6 6 8 -36 8 46 6 -10 H600"/></svg>
+      <div class="lbl"><span>Heart: larger than normal</span><span class="bpm">♥ 110</span></div>
+    </div>
+    <div class="vit">
+      <div class="row"><span>Kindness</span><div class="bar over" data-w="100"><i></i><span>OFF THE CHARTS</span></div></div>
+      <div class="row"><span>Laugh rate</span><div class="bar over" data-w="100"><i></i><span>∞ / min</span></div></div>
+      <div class="row"><span>Mirror checks</span><div class="bar" data-w="88"><i></i><span>47 / hour</span></div></div>
+      <div class="row"><span>Dance reflex</span><div class="bar" data-w="92"><i></i><span>Hyperactive</span></div></div>
+      <div class="row"><span>Strength</span><div class="bar over" data-w="96"><i></i><span>Kalicha idi kittum</span></div></div>
+      <div class="row"><span>Emotions</span><div class="bar" data-w="94"><i></i><span>Very sensitive</span></div></div>
+      <div class="row"><span>Sleep</span><div class="bar" data-w="12"><i></i><span style="left:32px;color:var(--muted);text-shadow:none">Insufficient</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Allergies</h2>
+    <div class="alert">
+      <span class="tag">⚠ SEVERE</span><br>
+      <b>Gifts.</b> Reaction: immediate tears, followed by “no no no, why would you…”<br>
+      <b>Compliments.</b> Reaction: moderate. Patient deflects and changes the subject.
+    </div>
+  </section>
+
+  <section>
+    <h2>Lab Results</h2>
+    <table>
+      <tr><th>Test</th><th>Result</th><th>Ref. range</th></tr>
+      <tr><td>Kunjus levels</td><td class="f">100%</td><td>100%</td></tr>
+      <tr><td>Effort received</td><td class="f">HIGH ↑↑</td><td>Patient disputes result</td></tr>
+      <tr><td>Times loved</td><td class="f">Uncountable</td><td>—</td></tr>
+      <tr><td>Mirror dependency</td><td class="f">Confirmed</td><td>Negative</td></tr>
+      <tr><td>Panchara Kunju exposure</td><td class="f">Chronic</td><td>See Delivery 2</td></tr>
+      <tr><td>Main character syndrome</td><td class="f">Positive</td><td>Rare</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Chest X-Ray</h2>
+    <div class="xray">
+      <div class="film"><span class="tagx">PA VIEW · R</span><img src="img/close-jhumka.jpg" alt="X-ray style photo">
+        <svg class="heart" viewBox="0 0 32 29" aria-hidden="true"><path d="M23.6 0c-3.4 0-6.3 2.7-7.6 5.6C14.7 2.7 11.8 0 8.4 0 3.8 0 0 3.8 0 8.4c0 9.4 9.5 11.9 16 21.3 6.1-9.3 16-12.1 16-21.3C32 3.8 28.2 0 23.6 0z" fill="#ff5d73"/></svg>
+      </div>
+      <p><b>Findings:</b> Heart is unusually large for body size. Glows when around people she loves. Appears to beat faster near dance music.<br><br><b>Impression:</b> Benign. <b>Do not treat.</b></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Diagnosis</h2>
+    <div class="dx">
+      <span class="stamp">CONFIRMED</span>
+      <div class="big">Acute Birthday-Approaching Syndrome</div>
+      <p>with chronic Main Character Syndrome and incurable Kidilam-ness.<br><b>Prognosis:</b> Excellent. Expected to get even better on 10 Nov.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Doctor's Notes</h2>
+    <div class="notes">Patient deserves effort. Lots of it. Has been prescribed accordingly. Do NOT let her talk you out of it.</div>
+  </section>
+
+  <section>
+    <h2>Treatment Plan</h2>
+    <ul class="plan">
+      <li class="done"><i>✓</i><span>6 Nov · The Lost Treasure quest</span></li>
+      <li class="done"><i>✓</i><span>7 Nov · 2026 Wrapped</span></li>
+      <li class="done today"><i>✓</i><span><b>8 Nov · This patient file</b></span></li>
+      <li class="soon"><i>?</i><span>9 Nov · Classified</span></li>
+      <li class="soon"><i>?</i><span>10 Nov · Classified (big)</span></li>
+    </ul>
+    <button class="discharge" id="dis">Discharge patient →</button>
+  </section>
+
+</div></div>
+<footer>KUNJUS GENERAL HOSPITAL · THIS FILE IS 100% MEDICALLY INACCURATE<br><br><a href="../index.html" style="color:#0f5e5f;font:700 14px/1 var(--round)">← All deliveries</a></footer>
+</div>
+
+<div id="rx" role="dialog" aria-modal="true" aria-label="Prescription">
+  <div class="pad">
+    <div class="top"><b>KUNJUS GENERAL HOSPITAL</b><span>Rx · PT-1011</span></div>
+    <div class="body">
+      <div class="who"><span>Patient: Dr. Nandana</span><span>Date: 8 Nov</span></div>
+      <div class="rxsym">℞</div>
+      <div class="script">One (1) magazine.<br><u>Volume 01, First Edition.</u><br>To be taken on 10 Nov, at 12:00 AM.</div>
+      <dl>
+        <dt>Refills</dt><dd>0 (one copy only)</dd>
+        <dt>Side effects</dt><dd>Smiling, possible crying</dd>
+        <dt>Warning</dt><dd>Do not refuse. Doctor's orders.</dd>
+      </dl>
+      <div class="sig"><div><div class="s">Dr. Stetho</div><small>Attending physician</small></div><span style="font-size:34px">🩺</span></div>
+      <span class="ok">APPROVED</span>
+    </div>
+    <div class="next">Delivery 4 arrives tomorrow, 9 Nov. Keep your phone close. ⏳</div>
+    <button class="close" id="close">Close</button>
+    <a href="../index.html" style="display:block;text-align:center;margin:-4px 0 14px;color:var(--teal);font:700 14px/1 var(--round)">← All deliveries</a>
+  </div>
+</div>
+
+<script>
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('seen');
+  e.target.querySelectorAll('.bar').forEach((b, i) => setTimeout(() => b.querySelector('i').style.width = b.dataset.w + '%', 200 + i * 150));
+  io.unobserve(e.target);
+}), { threshold: .2 });
+document.querySelectorAll('section').forEach(s => io.observe(s));
+document.getElementById('dis').onclick = () => document.getElementById('rx').classList.add('on');
+document.getElementById('close').onclick = () => document.getElementById('rx').classList.remove('on');
+document.getElementById('rx').addEventListener('click', e => { if (e.target.id === 'rx') e.target.classList.remove('on'); });
+</script>
+</body>
+</html>
