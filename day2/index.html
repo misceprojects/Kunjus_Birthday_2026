@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nandana Wrapped 2026</title>
+<meta name="description" content="Your 2026, wrapped.">
+<meta name="robots" content="noindex, nofollow">
+<script src="../guard.js" data-unlock="2026-11-07T00:00:00+05:30" data-label="7 Nov"></script>
+<style>
+@font-face{font-family:"Fredoka";src:url(fonts/fredoka-latin-wght-normal.woff2) format("woff2");font-weight:300 700;font-display:swap}
+@font-face{font-family:"Anton";src:url(fonts/anton-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+:root{--ink:#111;--display:"Anton",Impact,sans-serif;--round:"Fredoka",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#0b0b0d;overflow:hidden}
+body{font-family:var(--round);display:flex;align-items:center;justify-content:center;color:#fff;user-select:none}
+#phone{position:relative;height:100dvh;width:min(100vw,calc(100dvh * 9 / 16));overflow:clip;background:#000;container-type:size}
+@media (min-width:700px){#phone{height:min(94dvh,900px);width:calc(min(94dvh,900px) * 9 / 16);border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.6)}}
+
+#bars{position:absolute;top:max(10px,env(safe-area-inset-top));left:10px;right:10px;display:flex;gap:4px;z-index:20}
+#bars i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.35);overflow:hidden;position:relative}
+#bars i b{position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
+#brand{position:absolute;top:calc(max(10px,env(safe-area-inset-top)) + 12px);left:14px;z-index:20;font:700 13px/1 var(--round);letter-spacing:.06em;opacity:.9}
+#tapl,#tapr{position:absolute;top:0;bottom:0;z-index:10}
+#tapl{left:0;width:32%}#tapr{right:0;width:68%}
+
+.slide{position:absolute;inset:0;padding:64px 22px 30px;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .35s}
+.slide.on{opacity:1;pointer-events:auto}
+.k{font:700 4cqw/1.1 var(--round);letter-spacing:.04em;text-transform:uppercase;opacity:.85}
+.big{font:400 15cqw/.92 var(--display);text-transform:uppercase;letter-spacing:.005em}
+.mid{font:400 9.5cqw/.95 var(--display);text-transform:uppercase}
+.p{font:600 5cqw/1.3 var(--round)}
+.sm{font:500 4cqw/1.35 var(--round);opacity:.9}
+.in{opacity:0;transform:translateY(24px)}
+.slide.on .in{animation:rise .6s cubic-bezier(.2,1,.3,1) forwards}
+.slide.on .d1{animation-delay:.35s}.slide.on .d2{animation-delay:.9s}.slide.on .d3{animation-delay:1.6s}.slide.on .d4{animation-delay:2.4s}.slide.on .d5{animation-delay:3.2s}
+@keyframes rise{to{opacity:1;transform:none}}
+.ph{border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.ph img,.ph video{width:100%;height:100%;object-fit:cover;display:block}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.9;pointer-events:none}
+
+/* 1 intro */
+#s1{background:#ff3d7f;justify-content:space-between}
+#s1 .big{font-size:21cqw;color:#ffe14d}
+#s1 img.t{position:absolute;right:-10%;bottom:0;height:52%;z-index:0;animation:wave 1.6s ease-in-out infinite;transform-origin:bottom center}
+@keyframes wave{50%{transform:rotate(3deg)}}
+/* 2 doctor */
+#s2{background:#0d3b66;align-items:center;text-align:center;justify-content:center;gap:18px}
+#s2 .drum{font:400 13cqw/1 var(--display);color:#7bdff2;letter-spacing:.06em}
+#s2 .reveal{display:none;flex-direction:column;align-items:center;gap:14px}
+#s2.rev .drum{display:none}#s2.rev .reveal{display:flex}
+#s2 .big{color:#ffe14d;font-size:18cqw;animation:pulse 1.2s ease infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+#s2 .ph{width:52cqw;height:66cqw;transform:rotate(-3deg)}
+/* 3 location */
+#s3{background:#1db954;color:#0b2a14}
+#s3 .big{font-size:26cqw;margin:6cqw 0 5cqw}
+#s3 .tags{display:flex;flex-direction:column;gap:2.4cqw;margin-top:auto}
+#s3 .tags span{align-self:flex-start;background:#0b2a14;color:#c6ffd8;font:400 7cqw/1 var(--display);padding:2.4cqw 4cqw;border-radius:40px;text-transform:uppercase}
+#s3 .tags span:nth-child(2){margin-left:10cqw;background:#fff;color:#0b2a14}
+#s3 .tags span:nth-child(3){margin-left:4cqw}
+#s3 .tags span:nth-child(4){margin-left:16cqw;background:#ffe14d;color:#0b2a14}
+/* 4 mirror */
+#s4{background:#7b2ff7;padding:0}
+#s4 .grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:3px}
+#s4 .grid div{overflow:hidden;opacity:0;transform:scale(.6)}
+#s4.on .grid div{animation:popg .5s cubic-bezier(.3,1.5,.5,1) forwards}
+@keyframes popg{to{opacity:1;transform:none}}
+#s4 .grid img{width:100%;height:100%;object-fit:cover}
+#s4 .over{position:absolute;left:0;right:0;bottom:0;padding:22px;background:linear-gradient(0deg,rgba(40,0,90,.95) 40%,rgba(40,0,90,0));}
+#s4 .top{position:absolute;left:0;right:0;top:0;padding:64px 22px 30px;background:linear-gradient(180deg,rgba(40,0,90,.95) 40%,rgba(40,0,90,0))}
+/* 5 shift */
+#s5{background:#ff7a00;color:#1a0b00}
+#s5 .num{margin-top:4cqw;font:400 52cqw/.8 var(--display);color:#fff;letter-spacing:-.02em}
+#s5 .num small{font-size:12cqw;margin-left:2cqw}
+#s5 .ph{position:absolute;right:6cqw;bottom:6cqw;width:62cqw;height:82cqw;transform:rotate(4deg)}
+/* 6 song */
+#s6{background:#ffd60a;color:#1a1300;align-items:center;text-align:center}
+#s6 .disc{width:64cqw;height:64cqw;border-radius:50%;background:#111 center/cover;margin:5cqw 0 4cqw;box-shadow:0 0 0 2.4cqw #111,0 14px 30px rgba(0,0,0,.3);animation:spin 6s linear infinite;position:relative}
+#s6 .disc::after{content:"";position:absolute;inset:40%;border-radius:50%;background:#ffd60a;box-shadow:inset 0 0 0 1.4cqw #111}
+@keyframes spin{to{transform:rotate(360deg)}}
+#s6 .mid{font-size:11cqw}
+#s6 a.play{margin-top:4cqw;display:inline-block;background:#111;color:#ffd60a;text-decoration:none;font:700 4.6cqw/1 var(--round);padding:3.2cqw 6cqw;border-radius:40px;position:relative;z-index:15}
+/* 7 phrase */
+#s7{background:#111;justify-content:center}
+#s7 .file{font:400 11cqw/1 var(--display);color:#ff3d7f;margin:3cqw 0}
+#s7 .wave{display:flex;align-items:center;gap:1.6cqw;height:30cqw;margin:4cqw 0}
+#s7 .wave i{flex:1;background:#ff3d7f;border-radius:4px;animation:eq .7s ease-in-out infinite}
+@keyframes eq{0%,100%{height:20%}50%{height:100%}}
+#s7 .ha{font:400 9cqw/1 var(--display);color:#ffe14d;letter-spacing:.04em;white-space:nowrap;animation:scroll 6s linear infinite}
+@keyframes scroll{from{transform:translateX(10%)}to{transform:translateX(-60%)}}
+/* 8 tracks */
+#s8{background:#14213d}
+#s8 .clips{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4cqw;margin:5cqw 0 4cqw}
+#s8 .clips .ph{aspect-ratio:9/16}
+#s8 ol{list-style:none;display:flex;flex-direction:column;gap:3cqw}
+#s8 li{display:flex;align-items:center;gap:4cqw;font:600 5.2cqw/1.1 var(--round)}
+#s8 li b{font:400 10cqw/1 var(--display);color:#fca311;width:8cqw}
+#s8 li span small{display:block;font-size:3.6cqw;opacity:.7;font-weight:500}
+/* 9 genre */
+#s9{background:linear-gradient(160deg,#ff3d7f,#ff7a00);justify-content:center}
+#s9 .big{font-size:19cqw;color:#fff;text-shadow:0 1.2cqw 0 rgba(0,0,0,.18)}
+#s9 .chips{display:flex;flex-wrap:wrap;gap:2.4cqw;margin-top:6cqw}
+#s9 .chips span{background:#fff;color:#ff3d7f;font:700 4.6cqw/1 var(--round);padding:2.6cqw 4.4cqw;border-radius:40px}
+/* 10 cry */
+#s10{background:#3a86ff}
+#s10 .row{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:.6cqw solid rgba(255,255,255,.4);padding:4cqw 0}
+#s10 .row .mid{font-size:10cqw;color:#ffe14d}
+#s10 .ph{width:70cqw;height:92cqw;margin:auto auto 0;transform:rotate(-3deg)}
+/* 11 fan */
+#s11{background:#06d6a0;color:#03241b;align-items:center;text-align:center}
+#s11 .ph{width:74cqw;height:98cqw;margin:4cqw 0;transform:rotate(2deg)}
+#s11 .mid{font-size:12cqw}
+/* 12 soon */
+#s12{background:#000;justify-content:flex-end}
+#s12 .bg{position:absolute;inset:0;background:url(img/cover-blur.jpg) center/cover;opacity:.55}
+#s12 .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#000 20%,rgba(0,0,0,.2))}
+#s12 .rel{position:relative}
+#s12 .date{font:400 30cqw/.85 var(--display);color:#ffe14d}
+#s12 .lock{font-size:12cqw;margin-bottom:2cqw;animation:pulse 1.4s infinite}
+/* 13 summary */
+#s13{background:#ffe14d;color:#111;padding:60px 18px 20px}
+#s13 .card{background:#111;color:#fff;border-radius:18px;padding:5cqw;flex:1;display:flex;flex-direction:column;min-height:0}
+#s13 .head{display:flex;gap:4cqw;align-items:center;margin-bottom:4cqw}
+#s13 .head .ph{width:30cqw;height:38cqw;flex:none;border-radius:10px}
+#s13 .head .big{font-size:12cqw;color:#ffe14d}
+#s13 .cols{display:grid;grid-template-columns:1fr 1fr;gap:4cqw 3cqw}
+#s13 .cols div{min-width:0}
+#s13 .cols small{display:block;font:600 3.2cqw/1.2 var(--round);opacity:.65;text-transform:uppercase;letter-spacing:.06em}
+#s13 .cols b{display:block;font:400 6cqw/1.05 var(--display);text-transform:uppercase;margin-top:.8cqw;overflow-wrap:anywhere}
+#s13 .foot{margin-top:auto;padding-top:3cqw;font:600 3.4cqw/1.3 var(--round);opacity:.7;display:flex;justify-content:space-between}
+#s13 .again{margin-top:3cqw;align-self:center;background:#111;color:#ffe14d;border:0;border-radius:40px;padding:3cqw 7cqw;font:700 4.4cqw/1 var(--round);position:relative;z-index:15;cursor:pointer}
+
+#start{position:absolute;inset:0;z-index:30;background:#ff3d7f;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;gap:16px}
+#start .big{font-size:20cqw;color:#ffe14d}
+#start button{background:#111;color:#fff;border:0;border-radius:40px;padding:4cqw 9cqw;font:700 5.2cqw/1 var(--round);cursor:pointer}
+#start .hint{font:500 3.8cqw/1.3 var(--round);opacity:.85}
+#confetti{position:absolute;inset:0;pointer-events:none;z-index:25}
+</style>
+</head>
+<body>
+<div id="phone">
+  <div id="bars"></div>
+  <div id="brand">✦ Nandana Wrapped</div>
+  <div id="tapl"></div><div id="tapr"></div>
+
+  <section class="slide" id="s1" data-t="6000">
+    <div>
+      <div class="k in d1">Delivery 2 of 5 · 7 Nov</div>
+      <div class="big in d2" style="margin-top:4cqw">Your<br>2026<br>Wrapped</div>
+    </div>
+    <p class="p in d3" style="max-width:52%;position:relative;z-index:1;text-shadow:0 1px 8px rgba(160,0,60,.6)">It was a big year, Nandana. Let's look back at it.</p>
+    <img class="t" src="img/nandana-toon.png" alt="">
+  </section>
+
+  <section class="slide" id="s2" data-t="9000">
+    <div class="k in d1">Your #1 achievement of 2026</div>
+    <div class="drum">🥁 drumroll…</div>
+    <div class="reveal">
+      <div class="ph"><img src="img/doctor.jpg" alt="Nandana in scrubs"></div>
+      <div class="big">Became a<br>Doctor 🩺</div>
+      <div class="sm">MBBS: done. House surgency: in progress. Proud people: everyone.</div>
+    </div>
+  </section>
+
+  <section class="slide" id="s3" data-t="7000">
+    <div class="k in d1">Your top location</div>
+    <div class="big in d2">College.</div>
+    <div class="p in d3">Because of classes. And work. And more classes. And more work.</div>
+    <div class="tags">
+      <span class="in d3">Classes</span><span class="in d4">Ward rounds</span><span class="in d4">Exams</span><span class="in d5">No time for other stuff</span>
+    </div>
+  </section>
+
+  <section class="slide" id="s4" data-t="7500">
+    <div class="grid" id="mgrid"></div>
+    <div class="top"><div class="k">Your top accessory</div><div class="big" style="font-size:20cqw;margin-top:2cqw">The Mirror</div></div>
+    <div class="over"><div class="p">You're in the top <b style="color:#ffe14d">0.01%</b> of mirror users worldwide.</div><div class="sm" style="margin-top:2cqw">Mirrors visited: all of them.</div></div>
+  </section>
+
+  <section class="slide" id="s5" data-t="7000">
+    <div class="k in d1">Your longest session</div>
+    <div class="num in d2">36<small>HRS</small></div>
+    <div class="p in d3" style="max-width:52%;margin-top:3cqw">One shift. Thirty-six hours. Still smiling after. Somehow.</div>
+    <div class="ph in d4"><img src="img/busy-36hrs.jpg" alt="Nandana after a long shift"></div>
+  </section>
+
+  <section class="slide" id="s6" data-t="9000">
+    <div class="k in d1">Your top song</div>
+    <div class="disc" style="background-image:url(https://i.ytimg.com/vi/DR250weXo7A/hqdefault.jpg),radial-gradient(circle,#333 0 30%,#111 31% 100%)"></div>
+    <div class="mid in d3">Panchara Kunju</div>
+    <div class="sm in d3" style="margin-top:1.4cqw">Manjadi</div>
+    <div class="p in d4" style="margin-top:4cqw">A cartoon rhyme. For our Kunju. Of course it is.</div>
+    <a class="play in d4" href="https://www.youtube.com/watch?v=DR250weXo7A" target="_blank" rel="noopener">▶ Play it</a>
+  </section>
+
+  <section class="slide" id="s7" data-t="7500">
+    <div class="k in d1" style="color:#ff3d7f">Your most-used sound</div>
+    <div class="file in d2">*insert<br>laughing.mp3<br>here*</div>
+    <div class="wave in d3" id="wave"></div>
+    <div class="sm in d4">Played approximately <b style="color:#ffe14d">∞</b> times a day. At everything. Including things that weren't jokes.</div>
+    <div class="ha in d4" style="margin-top:5cqw">HAHAHAHAHA HAHAHA HAHAHAHAHAHA HAHA</div>
+  </section>
+
+  <section class="slide" id="s8" data-t="9000">
+    <div class="k in d1">Your top tracks</div>
+    <div class="clips in d2">
+      <div class="ph"><video src="vid/dance-saree.mp4" poster="vid/dance-saree.jpg" muted loop playsinline preload="metadata"></video></div>
+      <div class="ph"><video src="vid/dance-crop.mp4" poster="vid/dance-crop.jpg" muted loop playsinline preload="metadata"></video></div>
+      <div class="ph"><video src="vid/breakdance.mp4" poster="vid/breakdance.jpg" muted loop playsinline preload="metadata"></video></div>
+    </div>
+    <ol>
+      <li class="in d3"><b>1</b><span>Saree Mode<small>Nandana · on repeat</small></span></li>
+      <li class="in d4"><b>2</b><span>Main Stage<small>Nandana · her room</small></span></li>
+      <li class="in d5"><b>3</b><span>Breakdown → Breakdance<small>Nandana · exam season remix</small></span></li>
+    </ol>
+  </section>
+
+  <section class="slide" id="s9" data-t="6500">
+    <div class="k in d1">Your 2026 genre</div>
+    <div class="big in d2">Kidilam-<br>core</div>
+    <div class="chips">
+      <span class="in d3">Diva Pop</span><span class="in d3">Gym Rat Rock</span><span class="in d4">Emotional Ballads</span><span class="in d4">Mirror Selfie Lo-fi</span><span class="in d5">Doctor Drill</span>
+    </div>
+  </section>
+
+  <section class="slide" id="s10" data-t="7500">
+    <div class="k in d1">Your emotional stats</div>
+    <div class="row in d2"><span class="p">Times you cried at gifts</span><span class="mid">All</span></div>
+    <div class="row in d3"><span class="p">Times you deserved them</span><span class="mid">Also all</span></div>
+    <div class="ph in d4"><img src="img/gifts.jpg" alt="Nandana reacting dramatically"></div>
+  </section>
+
+  <section class="slide" id="s11" data-t="7500">
+    <div class="k in d1">Your #1 fan this year</div>
+    <div class="ph in d2"><img src="img/fan.jpg" alt="Your biggest fan"></div>
+    <div class="mid in d3">Literally. 🌀</div>
+  </section>
+
+  <section class="slide" id="s12" data-t="8000">
+    <div class="bg"></div>
+    <div class="rel">
+      <div class="lock in d1">🔒</div>
+      <div class="k in d1">Your biggest release of 2026</div>
+      <div class="date in d2">10.11</div>
+      <div class="p in d3" style="margin-top:3cqw">Drops on your birthday. Volume 01. First edition. One copy only.</div>
+      <div class="sm in d4" style="margin-top:3cqw">Delivery 3 arrives tomorrow. Stay tuned. 📰</div>
+    </div>
+  </section>
+
+  <section class="slide" id="s13" data-t="0">
+    <div class="card">
+      <div class="head">
+        <div class="ph"><img src="img/close-train.jpg" alt="Nandana"></div>
+        <div><div class="sm" style="opacity:.7">2026 Wrapped</div><div class="big">Dr.<br>Nandana</div></div>
+      </div>
+      <div class="cols">
+        <div><small>#1 Achievement</small><b>Became a Doctor</b></div>
+        <div><small>Top Location</small><b>College</b></div>
+        <div><small>Top Song</small><b>Panchara Kunju</b></div>
+        <div><small>Top Sound</small><b>laughing.mp3</b></div>
+        <div><small>Top Genre</small><b>Kidilam-core</b></div>
+        <div><small>Longest Shift</small><b>36 hrs</b></div>
+        <div><small>Top Accessory</small><b>Mirror</b></div>
+        <div><small>#1 Fan</small><b>A literal fan</b></div>
+      </div>
+      <div class="foot"><span>✦ Nandana Wrapped</span><span>Next drop: 8 Nov</span></div>
+    </div>
+    <div style="display:flex;gap:3cqw;justify-content:center;align-items:center;margin-top:3cqw;position:relative;z-index:15"><button class="again" id="again" style="margin:0">↺ Watch again</button><a href="../index.html" style="color:#111;font:700 4.2cqw/1 var(--round)">All deliveries →</a></div>
+  </section>
+
+  <div id="start">
+    <div class="k">Delivery 2 of 5</div>
+    <div class="big">Your 2026<br>Wrapped</div>
+    <button id="go">Let's see it ▶</button>
+    <div class="hint">Tap right for next, left for back.<br>Hold to pause.</div>
+    <a href="../index.html" style="color:#fff;opacity:.85;font:600 3.8cqw/1 var(--round)">← All deliveries</a>
+  </div>
+  <canvas id="confetti"></canvas>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const slides = [...document.querySelectorAll('.slide')];
+const bars = $('#bars');
+bars.innerHTML = slides.map(() => '<i><b></b></i>').join('');
+const fills = [...bars.querySelectorAll('b')];
+let cur = -1, timer = null, t0 = 0, dur = 0, paused = false, elapsed = 0, raf = null;
+
+// mirror grid
+const mirrors = ['mirror-1','fp-stripes','mirror-2','fp-navy','mirror-3','gym-red','fp-pink','mirror-4','mirror-5','fp-white','mirror-6','first-edition','mirror-1','fp-stripes','mirror-2'];
+$('#mgrid').innerHTML = mirrors.map((m, i) => `<div style="animation-delay:${i * .12}s"><img src="img/${m}.jpg" alt=""></div>`).join('');
+$('#wave').innerHTML = Array.from({ length: 22 }, (_, i) => `<i style="animation-delay:${(i * 0.07) % 0.7}s"></i>`).join('');
+
+function show(i) {
+  if (i < 0) i = 0;
+  if (i >= slides.length) i = slides.length - 1;
+  slides.forEach((s, k) => { s.classList.toggle('on', k === i); });
+  fills.forEach((f, k) => { f.style.transition = 'none'; f.style.transform = `scaleX(${k < i ? 1 : 0})`; });
+  document.querySelectorAll('video').forEach(v => v.pause());
+  slides[i].querySelectorAll('video').forEach(v => { v.currentTime = 0; v.play().catch(() => {}); });
+  cur = i;
+  const s = slides[i];
+  // restart in-animations
+  s.querySelectorAll('.in').forEach(e => { e.style.animation = 'none'; void e.offsetWidth; e.style.animation = ''; });
+  if (s.id === 's2') { s.classList.remove('rev'); setTimeout(() => { if (cur === 1) { s.classList.add('rev'); confetti(); } }, 2400); }
+  if (s.id === 's11' || s.id === 's13') confetti();
+  dur = +s.dataset.t; elapsed = 0; t0 = performance.now();
+  cancelAnimationFrame(raf);
+  if (dur > 0) tick(); else fills[i].style.transform = 'scaleX(1)';
+}
+function tick() {
+  raf = requestAnimationFrame(() => {
+    if (!paused) {
+      const e = elapsed + (performance.now() - t0);
+      fills[cur].style.transform = `scaleX(${Math.min(1, e / dur)})`;
+      if (e >= dur) { show(cur + 1); return; }
+    }
+    tick();
+  });
+}
+function pause() { if (paused) return; paused = true; elapsed += performance.now() - t0; }
+function resume() { if (!paused) return; paused = false; t0 = performance.now(); }
+
+let pressT = 0, held = false;
+['tapl', 'tapr'].forEach(id => {
+  const el = $('#' + id);
+  el.addEventListener('pointerdown', () => { pressT = Date.now(); held = false; setTimeout(() => { if (pressT && Date.now() - pressT >= 280) { held = true; pause(); } }, 300); });
+  el.addEventListener('pointerup', () => {
+    const wasHeld = held; pressT = 0; held = false;
+    if (wasHeld) { resume(); return; }
+    paused = false;
+    show(id === 'tapr' ? cur + 1 : cur - 1);
+  });
+  el.addEventListener('pointerleave', () => { pressT = 0; if (held) { held = false; resume(); } });
+});
+document.addEventListener('keydown', e => { if (cur < 0) return; if (e.key === 'ArrowRight') show(cur + 1); if (e.key === 'ArrowLeft') show(cur - 1); });
+$('#go').onclick = () => { $('#start').style.display = 'none'; show(0); };
+$('#again').onclick = e => { e.stopPropagation(); show(0); };
+
+function confetti() {
+  const c = $('#confetti'), x = c.getContext('2d'), P = $('#phone');
+  c.width = P.clientWidth; c.height = P.clientHeight;
+  const cols = ['#ff3d7f', '#ffe14d', '#1db954', '#7b2ff7', '#ff7a00', '#3a86ff'];
+  const ps = Array.from({ length: 140 }, () => ({ x: c.width / 2, y: c.height * .4, vx: (Math.random() - .5) * 12, vy: -Math.random() * 12 - 4, s: 5 + Math.random() * 6, r: Math.random() * 6, c: cols[Math.floor(Math.random() * cols.length)] }));
+  let f = 0;
+  (function t() {
+    x.clearRect(0, 0, c.width, c.height);
+    ps.forEach(p => { p.vy += .32; p.x += p.vx; p.y += p.vy; p.r += .2; x.save(); x.translate(p.x, p.y); x.rotate(p.r); x.fillStyle = p.c; x.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); x.restore(); });
+    if (++f < 130) requestAnimationFrame(t); else x.clearRect(0, 0, c.width, c.height);
+  })();
+}
+</script>
+</body>
+</html>

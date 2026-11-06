@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nandana's Quest</title>
+<meta name="description" content="A pre-birthday treasure hunt.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+@font-face{font-family:"Fredoka";src:url(fonts/fredoka-latin-wght-normal.woff2) format("woff2");font-weight:300 700;font-display:swap}
+@font-face{font-family:"Caveat";src:url(fonts/caveat-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+:root{
+  --ink:#2b1d3a; --cream:#fffaf0; --sun:#ffcf33; --pink:#ff5d8f; --teal:#19b5a5; --purple:#7b4fd6; --orange:#ff8a3d; --green:#3fae4f;
+  --round:"Fredoka",system-ui,sans-serif; --hand:"Caveat",cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#1b1230;overflow:hidden}
+body{font-family:var(--round);color:var(--ink);display:flex;justify-content:center}
+button{font-family:inherit;cursor:pointer}
+
+#stage{position:relative;overscroll-behavior:none;overflow:clip;width:100%;max-width:1000px;height:100%;height:100dvh;overflow:hidden;background:linear-gradient(180deg,#7fd3ff,#c9f0ff 60%,#9be38b 60%,#6cc35b);transition:background .8s}
+#deco{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+#deco span{position:absolute;opacity:.55;filter:saturate(1.1);animation:bob 5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px) rotate(4deg)}}
+
+.chip{position:absolute;top:max(14px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);background:#fff;border:3px solid var(--ink);border-radius:40px;padding:8px 18px;font-weight:700;font-size:clamp(14px,3.6vw,18px);white-space:nowrap;box-shadow:0 4px 0 var(--ink);z-index:6;opacity:0;transition:opacity .4s}
+.chip.on{opacity:1}
+#mute{position:absolute;top:max(12px,env(safe-area-inset-top));right:12px;width:44px;height:44px;border-radius:50%;border:3px solid var(--ink);background:#fff;font-size:20px;box-shadow:0 3px 0 var(--ink);z-index:20}
+
+#toon{position:absolute;left:-2%;bottom:0;height:min(58%,560px);z-index:2;transform-origin:bottom center;transition:transform .3s}
+#toon.aside{transform:translateX(-62%)}
+#toon.talk{animation:hop .35s ease}
+@keyframes hop{40%{transform:translateY(-12px)}}
+#fox{position:absolute;right:-4%;bottom:12%;height:min(42%,380px);z-index:2;transform:translateX(130%);transition:transform .6s cubic-bezier(.3,1.4,.5,1)}
+#fox.in{transform:translateX(0)}
+#fox.out{transform:translateX(140%) rotate(20deg)}
+
+#pops{position:absolute;left:0;right:0;top:9%;height:46%;z-index:3;pointer-events:none}
+.pop{position:absolute;left:50%;top:50%;width:min(46vw,250px);background:#fff;padding:10px 10px 0;border-radius:6px;box-shadow:0 14px 30px rgba(0,0,0,.35);transform:translate(-50%,-50%) scale(.2) rotate(var(--r));opacity:0;animation:popin .55s cubic-bezier(.3,1.6,.5,1) forwards}
+.pop img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
+.pop p{font:600 clamp(18px,4.8vw,24px)/1.1 var(--hand);text-align:center;padding:8px 4px 10px}
+.pop.bye{animation:popout .35s ease forwards}
+@keyframes popin{to{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(var(--r))}}
+@keyframes popout{to{opacity:0;transform:translate(-50%,-40%) scale(.7) rotate(var(--r))}}
+
+#ui{position:absolute;left:0;right:0;bottom:0;padding:0 12px max(12px,env(safe-area-inset-bottom));z-index:8;display:flex;flex-direction:column;align-items:center;gap:10px}
+#choices{width:min(100%,560px);display:none}
+#choices.on{display:block}
+.qbox{background:#fff;border:3px solid var(--ink);border-radius:18px;padding:14px;box-shadow:0 5px 0 var(--ink)}
+.qbox h3{font-weight:700;font-size:clamp(17px,4.4vw,21px);text-align:center;margin-bottom:12px}
+.opts{display:grid;gap:9px}
+.opt{background:var(--sun);border:3px solid var(--ink);border-radius:14px;padding:12px;font-weight:600;font-size:clamp(16px,4.2vw,19px);box-shadow:0 4px 0 var(--ink);transition:transform .08s}
+.opt:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.opt.wrong{animation:shake .4s;background:#ffb3b3}
+.opt.right{background:#9be38b}
+@keyframes shake{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.imgopts{grid-template-columns:repeat(4,1fr)}
+.imgopts .opt{padding:4px;background:#fff}
+.imgopts img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;display:block}
+.tiles{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.tile{width:46px;height:52px;border:3px solid var(--ink);border-radius:10px;background:var(--orange);color:#fff;font-weight:700;font-size:26px;box-shadow:0 4px 0 var(--ink)}
+.tile.used{opacity:.25;pointer-events:none}
+.slots{display:flex;justify-content:center;gap:8px;margin-bottom:12px}
+.slot{width:46px;height:52px;border:3px dashed var(--ink);border-radius:10px;background:#fff6dd;font-weight:700;font-size:26px;display:flex;align-items:center;justify-content:center}
+.row{display:flex;justify-content:center;gap:10px}
+.small{background:#fff;border:3px solid var(--ink);border-radius:30px;padding:8px 16px;font-weight:600;box-shadow:0 3px 0 var(--ink)}
+.big{display:block;margin:0 auto;background:var(--pink);color:#fff;border:3px solid var(--ink);border-radius:40px;padding:14px 30px;font-weight:700;font-size:clamp(20px,5.4vw,26px);box-shadow:0 5px 0 var(--ink)}
+.big:active{transform:translateY(3px);box-shadow:0 2px 0 var(--ink)}
+.counter{display:flex;justify-content:center;gap:8px;margin-top:10px;font-size:26px}
+
+#dialog{width:min(100%,640px);background:var(--cream);border:3px solid var(--ink);border-radius:20px;padding:12px 16px 14px;box-shadow:0 6px 0 var(--ink);display:none;position:relative;min-height:96px;cursor:pointer;user-select:none}
+#dialog.on{display:block}
+.who{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.who .av{width:42px;height:42px;border-radius:50%;border:3px solid var(--ink);background:#fff;overflow:hidden;flex:none;display:flex;align-items:center;justify-content:center}
+.who .av img{width:100%;height:100%;object-fit:cover;object-position:50% 8%}
+.who .av svg{width:72%;height:72%}
+.who b{font-weight:700;font-size:17px;padding:2px 12px;border-radius:20px;color:#fff;background:var(--teal)}
+.who b.n{background:var(--pink)}
+.who b.f{background:var(--orange)}
+#text{font-size:clamp(17px,4.4vw,20px);line-height:1.35;min-height:2.7em}
+#next{position:absolute;right:14px;bottom:8px;font-size:15px;opacity:.6;animation:nudge 1s infinite}
+@keyframes nudge{50%{transform:translateX(4px)}}
+
+/* overlays */
+.ov{position:absolute;inset:0;z-index:15;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px}
+.ov.on{display:flex}
+#start{background:radial-gradient(circle at 50% 40%,#ffe46b,#ff9a3d 60%,#ff5d8f)}
+#start h1{font-weight:700;font-size:clamp(34px,9vw,64px);line-height:.95;color:#fff;-webkit-text-stroke:2px var(--ink);text-shadow:0 5px 0 var(--ink);margin-bottom:6px}
+#start .sub{font-weight:600;font-size:clamp(16px,4.4vw,22px);margin-bottom:16px}
+#start img{height:min(42vh,380px);margin-bottom:18px;filter:drop-shadow(0 8px 0 rgba(0,0,0,.15))}
+#start .pre{display:inline-block;background:#fff;border:3px solid var(--ink);border-radius:30px;padding:6px 14px;font-weight:700;margin-bottom:12px;transform:rotate(-3deg)}
+
+#map{background:rgba(27,18,48,.82);backdrop-filter:blur(4px)}
+#map .paper{background:#fff2c9;border:4px solid var(--ink);border-radius:22px;padding:14px;width:min(94vw,440px);box-shadow:0 8px 0 var(--ink);position:relative}
+#map .paper::before{content:"";position:absolute;inset:8px;border:2px dashed #c9a66b;border-radius:16px;pointer-events:none}
+#map h2{font-weight:700;font-size:28px;margin-bottom:4px}
+#map svg{width:100%;height:auto;display:block}
+#map .big{margin-top:10px}
+
+/* chests */
+#treasure{position:absolute;left:50%;bottom:40%;transform:translateX(-50%);z-index:4;display:none;flex-direction:column;align-items:center}
+#treasure.on{display:flex}
+.chest{width:min(52vw,250px);cursor:pointer;filter:drop-shadow(0 10px 0 rgba(0,0,0,.25))}
+.chest.wiggle{animation:wig 1s infinite}
+@keyframes wig{0%,100%{transform:rotate(0)}10%{transform:rotate(-6deg)}20%{transform:rotate(6deg)}30%{transform:rotate(-4deg)}40%{transform:rotate(0)}}
+.chest .lid{transform-origin:20px 64px;transition:transform .6s cubic-bezier(.3,1.5,.5,1)}
+.chest.open .lid{transform:rotate(-38deg) translate(-6px,-14px)}
+.chest .glow{opacity:0;transition:opacity .4s}
+.chest.open .glow{opacity:1}
+
+#prize{position:absolute;inset:0;z-index:12;display:none;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle,#fff6c2,#ffcf33 55%,#ff8a3d);padding:16px;text-align:center}
+#prize.on{display:flex}
+#prize h2{font-weight:700;font-size:clamp(26px,7vw,44px);line-height:1;color:#fff;-webkit-text-stroke:1.5px var(--ink);text-shadow:0 4px 0 var(--ink)}
+#prize .ph{width:min(70vw,330px);background:#fff;padding:12px 12px 14px;border-radius:6px;box-shadow:0 16px 40px rgba(0,0,0,.35);margin:16px 0 12px;transform:rotate(-3deg);animation:popin2 .7s cubic-bezier(.3,1.6,.5,1)}
+@keyframes popin2{from{transform:scale(.1) rotate(-30deg)}}
+#prize .ph img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:3px}
+#prize .line{font-weight:600;font-size:clamp(18px,4.8vw,24px);line-height:1.25;max-width:520px}
+#prize .burn{font-size:clamp(34px,9vw,52px);margin-top:6px;animation:wig 1.4s infinite}
+#prize .bc{position:absolute;bottom:max(10px,env(safe-area-inset-bottom));right:12px;background:#fff;padding:4px 6px 3px;font:600 9px/1 var(--round);letter-spacing:.15em;opacity:.55;border-radius:3px}
+#prize .bc i{display:block;width:70px;height:20px;margin-bottom:3px;background:repeating-linear-gradient(90deg,#000 0 2px,#fff 2px 4px,#000 4px 7px,#fff 7px 8px,#000 8px 9px,#fff 9px 12px)}
+
+#final{position:absolute;inset:0;overflow:hidden;z-index:13;display:none;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle,#ffe0ec,#ff9ec0 60%,#c56cf0);padding:16px;text-align:center;color:var(--ink)}
+#final.on{display:flex}
+#final .smallchest{width:min(34vw,150px);cursor:pointer;filter:drop-shadow(0 8px 0 rgba(0,0,0,.2));position:relative}
+#final .ph{position:relative;width:min(56vw,270px);background:#fff;padding:10px 10px 12px;border-radius:6px;box-shadow:0 16px 40px rgba(0,0,0,.3);transform:rotate(2deg);animation:popin2 .7s cubic-bezier(.3,1.6,.5,1);display:none}
+#final .ph img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:3px}
+#final .ph p{font:600 24px/1.1 var(--hand);padding-top:8px}
+#final h2{font-weight:700;font-size:clamp(24px,6.4vw,36px);margin:14px 0 6px;display:none}
+#final .trailer{font-size:clamp(16px,4.2vw,20px);max-width:460px;display:none}
+#final .again{margin-top:16px;display:none}
+.scroll{position:absolute;right:-14px;bottom:-14px;width:40px;height:40px;border:0;background:none;font-size:26px;opacity:.5;transition:opacity .3s,transform .3s;display:none}
+.scroll:hover{opacity:1;transform:rotate(-12deg) scale(1.2)}
+#note{position:absolute;inset:0;z-index:30;display:none;align-items:center;justify-content:center;background:rgba(27,18,48,.75);padding:20px}
+#note.on{display:flex}
+#note .card{background:#fff8e1;border:3px solid var(--ink);border-radius:16px;padding:22px 20px;max-width:380px;box-shadow:0 6px 0 var(--ink);transform:rotate(-1.5deg);text-align:center}
+#note .card .k{font-weight:700;font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:var(--pink)}
+#note .card p{font:600 25px/1.2 var(--hand);margin:10px 0 14px}
+#confetti{position:absolute;inset:0;pointer-events:none;z-index:40}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="deco"></div>
+  <div class="chip" id="chip"></div>
+  <button id="mute" aria-label="Toggle music">🔊</button>
+
+  <img id="toon" src="img/nandana-toon.png" alt="Cartoon Nandana">
+  <img id="fox" src="img/fox.png" alt="A sneaky fox">
+  <div id="pops"></div>
+
+  <div id="treasure">
+    <svg class="chest" id="bigchest" viewBox="0 0 160 130" aria-label="Treasure chest" role="button">
+      <g class="glow"><circle cx="80" cy="62" r="58" fill="#fff6a8" opacity=".7"/></g>
+      <rect x="14" y="62" width="132" height="62" rx="8" fill="#a8622b" stroke="#2b1d3a" stroke-width="5"/>
+      <rect x="14" y="78" width="132" height="10" fill="#ffcf33" stroke="#2b1d3a" stroke-width="3"/>
+      <rect x="40" y="62" width="10" height="62" fill="#ffcf33" stroke="#2b1d3a" stroke-width="3"/>
+      <rect x="110" y="62" width="10" height="62" fill="#ffcf33" stroke="#2b1d3a" stroke-width="3"/>
+      <g class="lid"><path d="M14 64 Q14 22 80 22 Q146 22 146 64 Z" fill="#c4773a" stroke="#2b1d3a" stroke-width="5"/><path d="M40 64 Q40 30 45 26 L55 25 Q50 30 50 64Z" fill="#ffcf33" stroke="#2b1d3a" stroke-width="3"/><path d="M110 64 Q110 30 115 26 L105 25 Q120 30 120 64Z" fill="#ffcf33" stroke="#2b1d3a" stroke-width="3"/></g>
+      <rect x="68" y="56" width="24" height="28" rx="5" fill="#ffcf33" stroke="#2b1d3a" stroke-width="4"/><circle cx="80" cy="69" r="4" fill="#2b1d3a"/>
+    </svg>
+  </div>
+
+  <div id="ui">
+    <div id="choices"></div>
+    <div id="dialog" aria-live="polite">
+      <div class="who"><span class="av" id="av"></span><b id="name">Stetho</b></div>
+      <div id="text"></div>
+      <span id="next">tap ▸</span>
+    </div>
+  </div>
+
+  <div class="ov on" id="start">
+    <div class="pre">🎈 Delivery 1 of 5 · Pre-Birthday Edition</div>
+    <h1>Nandana &amp; the<br>Lost Treasure</h1>
+    <div class="sub">A quest for exactly one explorer.</div>
+    <img src="img/nandana-toon.png" alt="">
+    <button class="big" id="go">Let's go! ▶</button>
+  </div>
+
+  <div class="ov" id="map">
+    <div class="paper">
+      <h2>🗺️ The Map</h2>
+      <svg viewBox="0 0 360 430" id="mapsvg"></svg>
+      <button class="big" id="mapgo">Let's go!</button>
+    </div>
+  </div>
+
+  <div id="prize">
+    <h2>🎉 CONGRATULATION 🎉</h2>
+    <div class="ph"><img src="img/prize-me.jpg" alt="The prize"></div>
+    <div class="line">You've won this sexy picture of me.<br>Suffer your burning eyes.</div>
+    <div class="burn">🔥👀🔥</div>
+    <div class="bc" title="Hmm, where have you seen this number before?"><i></i>NA-0001-2026</div>
+  </div>
+
+  <div id="final">
+    <svg class="chest smallchest" id="smallchest" viewBox="0 0 160 130" aria-label="Small chest" role="button">
+      <g class="glow"><circle cx="80" cy="62" r="58" fill="#fff" opacity=".8"/></g>
+      <rect x="14" y="62" width="132" height="62" rx="8" fill="#8d4fd6" stroke="#2b1d3a" stroke-width="5"/>
+      <rect x="14" y="78" width="132" height="10" fill="#ffcf33" stroke="#2b1d3a" stroke-width="3"/>
+      <g class="lid"><path d="M14 64 Q14 22 80 22 Q146 22 146 64 Z" fill="#a874e8" stroke="#2b1d3a" stroke-width="5"/></g>
+      <path d="M80 56 l7 8 -7 18 -7 -18z" fill="#ff5d8f" stroke="#2b1d3a" stroke-width="3"/>
+    </svg>
+    <div class="ph" id="oldph"><img src="img/old-photo.jpg" alt="An old photo of Nandana"><p>Then. Now. Always our Kunjus 🤍</p><button class="scroll" id="scroll" aria-label="A rolled-up note">📜</button></div>
+    <h2 id="finalh">The real treasure was always you.</h2>
+    <div class="trailer" id="trailer">But this quest? Just the trailer. Your real gift arrives on your birthday. Delivery 2 unlocks tomorrow… 👀</div>
+    <button class="big again" id="again">Play again ↺</button>
+    <a class="small hub" href="../index.html" style="display:none;margin-top:12px;text-decoration:none;color:var(--ink)">← All deliveries</a>
+  </div>
+
+  <div id="note"><div class="card">
+    <div class="k">Secret Clue</div>
+    <p>Every great story deserves a cover.<br>Yours is being printed… well, published.<br>Volume 01. First Edition. Copy 001 of 001.<br>Coming on your birthday. 📰</p>
+    <button class="small" id="noteclose">Got it 🤫</button>
+  </div></div>
+
+  <canvas id="confetti"></canvas>
+</div>
+
+<audio id="bgm" src="audio/theme.mp3" loop preload="auto"></audio>
+
+<script>
+const $ = s => document.querySelector(s);
+const stage = $('#stage'), dialog = $('#dialog'), textEl = $('#text'), nameEl = $('#name'), av = $('#av');
+const choices = $('#choices'), pops = $('#pops'), toon = $('#toon'), fox = $('#fox'), chip = $('#chip');
+const bgm = $('#bgm'); let muted = false;
+
+/* ---------- sound ---------- */
+let actx;
+function tone(freqs, dur = .12, type = 'triangle', vol = .18) {
+  if (muted) return;
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    let t = actx.currentTime;
+    freqs.forEach(f => {
+      const o = actx.createOscillator(), g = actx.createGain();
+      o.type = type; o.frequency.value = f; o.connect(g); g.connect(actx.destination);
+      g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.001, t + dur);
+      o.start(t); o.stop(t + dur); t += dur * .8;
+    });
+  } catch (e) {}
+}
+const sfx = { right: () => tone([660, 880, 1175]), wrong: () => tone([220, 160], .16, 'square', .12), pop: () => tone([520, 780], .07), tap: () => tone([900], .04, 'sine', .08), open: () => tone([523, 659, 784, 1047, 1319], .14) };
+$('#mute').onclick = e => { e.stopPropagation(); muted = !muted; bgm.muted = muted; $('#mute').textContent = muted ? '🔇' : '🔊'; };
+
+/* ---------- avatars ---------- */
+const STETHO = '<svg viewBox="0 0 24 24" fill="none" stroke="#2b1d3a" stroke-width="2" stroke-linecap="round"><path d="M4.5 2.5v5.5a4.5 4.5 0 0 0 9 0V2.5"/><path d="M3 2.5h3M12 2.5h3"/><path d="M9 12.5v2.5a4.5 4.5 0 0 0 9 0v-3"/><circle cx="18" cy="9.5" r="2.4" fill="#19b5a5"/></svg>';
+const WHO = {
+  s: { name: 'Stetho', cls: '', av: STETHO },
+  n: { name: 'Nandana', cls: 'n', av: '<img src="img/nandana-toon.png" alt="">' },
+  f: { name: 'Sneaky Fox', cls: 'f', av: '<img src="img/fox.png" alt="" style="object-position:30% 20%">' },
+};
+
+/* ---------- dialogue engine ---------- */
+let typing = null, typeDone = null, waiter = null;
+function say(who, text) {
+  const w = WHO[who];
+  return new Promise(res => {
+    dialog.classList.add('on'); choices.classList.remove('on');
+    nameEl.textContent = w.name; nameEl.className = w.cls; av.innerHTML = w.av;
+    if (who === 'n') { toon.classList.remove('talk'); void toon.offsetWidth; toon.classList.add('talk'); }
+    textEl.textContent = ''; $('#next').style.visibility = 'hidden';
+    let i = 0;
+    const done = () => { clearInterval(typing); typing = null; typeDone = null; textEl.textContent = text; $('#next').style.visibility = 'visible'; waiter = res; };
+    typing = setInterval(() => { textEl.textContent = text.slice(0, ++i); if (i % 3 === 0) sfx.tap(); if (i >= text.length) done(); }, 24);
+    typeDone = done;
+  });
+}
+function advance() {
+  if (typing && typeDone) { typeDone(); return; }
+  if (waiter) { const w = waiter; waiter = null; w(); }
+}
+dialog.addEventListener('click', advance);
+document.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); advance(); } });
+
+function pop(src, caption) {
+  [...pops.children].forEach(p => { p.classList.add('bye'); setTimeout(() => p.remove(), 350); });
+  const d = document.createElement('div'); d.className = 'pop';
+  d.style.setProperty('--r', (Math.random() * 10 - 5).toFixed(1) + 'deg');
+  d.innerHTML = `<img src="${src}" alt=""><p>${caption}</p>`;
+  pops.appendChild(d); sfx.pop();
+}
+function clearPops() { [...pops.children].forEach(p => { p.classList.add('bye'); setTimeout(() => p.remove(), 350); }); }
+
+function panel(html) { dialog.classList.remove('on'); choices.innerHTML = `<div class="qbox">${html}</div>`; choices.classList.add('on'); }
+
+function choice(q, opts, wrongLines) {
+  return new Promise(res => {
+    panel(`<h3>${q}</h3><div class="opts">${opts.map((o, i) => `<button class="opt" data-i="${i}">${o.t}</button>`).join('')}</div>`);
+    let wi = 0;
+    choices.querySelectorAll('.opt').forEach(b => b.onclick = () => {
+      const o = opts[+b.dataset.i];
+      if (o.ok) { b.classList.add('right'); sfx.right(); setTimeout(res, 500); }
+      else { b.classList.remove('wrong'); void b.offsetWidth; b.classList.add('wrong'); sfx.wrong();
+        choices.querySelector('h3').textContent = wrongLines[wi++ % wrongLines.length]; }
+    });
+  });
+}
+function imageChoice(q, srcs) {
+  return new Promise(res => {
+    panel(`<h3>${q}</h3><div class="opts imgopts">${srcs.map(s => `<button class="opt"><img src="${s}" alt="Nandana mirror selfie"></button>`).join('')}</div>`);
+    choices.querySelectorAll('.opt').forEach(b => b.onclick = () => { b.classList.add('right'); sfx.right(); setTimeout(res, 500); });
+  });
+}
+function scramble(word) {
+  return new Promise(res => {
+    let letters = word.split('');
+    do { letters.sort(() => Math.random() - .5); } while (letters.join('') === word);
+    panel(`<h3>Put the letters back in order!</h3><div class="slots">${word.split('').map(() => '<span class="slot"></span>').join('')}</div>
+      <div class="tiles">${letters.map((l, i) => `<button class="tile" data-i="${i}">${l}</button>`).join('')}</div>
+      <div class="row"><button class="small" id="undo">↺ Reset</button></div>`);
+    let built = [];
+    const slots = choices.querySelectorAll('.slot'), h = choices.querySelector('h3');
+    const render = () => slots.forEach((s, i) => s.textContent = built[i] ? built[i].l : '');
+    choices.querySelectorAll('.tile').forEach(t => t.onclick = () => {
+      built.push({ l: t.textContent, t }); t.classList.add('used'); sfx.tap(); render();
+      if (built.length === word.length) {
+        if (built.map(b => b.l).join('') === word) { sfx.right(); h.textContent = '✨ ' + word + '! ✨'; setTimeout(res, 700); }
+        else { sfx.wrong(); h.textContent = 'Hmm, not quite. Try again!'; setTimeout(() => { built.forEach(b => b.t.classList.remove('used')); built = []; render(); }, 600); }
+      }
+    });
+    $('#undo').onclick = () => { built.forEach(b => b.t.classList.remove('used')); built = []; render(); };
+  });
+}
+function tapN(q, label, n) {
+  return new Promise(res => {
+    panel(`<h3>${q}</h3><button class="big" id="tapb">${label}</button><div class="counter" id="cnt">${'⚪'.repeat(n)}</div>`);
+    let c = 0;
+    $('#tapb').onclick = () => {
+      c++; sfx.right(); $('#cnt').textContent = '🟢'.repeat(c) + '⚪'.repeat(n - c);
+      $('#tapb').style.transform = 'scale(1.12)'; setTimeout(() => $('#tapb') && ($('#tapb').style.transform = ''), 120);
+      if (c >= n) setTimeout(res, 400);
+    };
+  });
+}
+function button(label) {
+  return new Promise(res => { panel(`<button class="big" id="one">${label}</button>`); $('#one').onclick = () => { sfx.right(); res(); }; });
+}
+const wait = ms => new Promise(r => setTimeout(r, ms));
+
+/* ---------- scenes ---------- */
+const SCENES = [
+  { id: 'mirror', name: '🪞 Mirror Mountain', bg: 'linear-gradient(180deg,#d9c4ff,#f6e8ff 58%,#c7a6f2 58%,#a77fe0)', deco: ['🪞', '✨', '⛰️', '💄', '✨'] },
+  { id: 'canyon', name: '🏜️ Kunjus Canyon', bg: 'linear-gradient(180deg,#ffd27a,#ffe9b8 58%,#f0a050 58%,#d97a32)', deco: ['🌵', '🏜️', '☀️', '🌵', '🦎'] },
+  { id: 'bridge', name: '🏥 Hospital Bridge', bg: 'linear-gradient(180deg,#8fe3ff,#d8f7ff 58%,#5fc4d6 58%,#2f9fb5)', deco: ['🏥', '🌉', '🩺', '💊', '☁️'] },
+  { id: 'cave', name: '🎁 The Gift Cave', bg: 'linear-gradient(180deg,#4b2a6e,#6d3f99 58%,#3a2157 58%,#2a1640)', deco: ['🎁', '💎', '🦇', '🎀', '✨'] },
+  { id: 'forest', name: '🌲 Sneaky Forest', bg: 'linear-gradient(180deg,#9be9a8,#d4f7c9 58%,#4fb05c 58%,#2f8a3f)', deco: ['🌲', '🌳', '🍄', '🌲', '🦋'] },
+  { id: 'treasure', name: '💰 The Treasure', bg: 'radial-gradient(circle at 50% 45%,#fff6b0,#ffcf33 50%,#ff8a3d)', deco: ['✨', '💰', '⭐', '✨', '👑'] },
+];
+const POS = [[60, 380], [250, 330], [90, 255], [270, 185], [100, 110], [250, 45]];
+
+function setScene(i) {
+  const s = SCENES[i];
+  stage.style.background = s.bg;
+  chip.textContent = s.name; chip.classList.add('on');
+  $('#deco').innerHTML = s.deco.map((e, k) => `<span style="left:${8 + k * 19}%;top:${10 + (k % 2) * 16}%;font-size:${34 + (k % 3) * 14}px;animation-delay:${k * .7}s">${e}</span>`).join('');
+}
+function drawMap(next) {
+  const svg = $('#mapsvg');
+  let d = `M${POS[0][0]} ${POS[0][1]}`;
+  for (let i = 1; i < POS.length; i++) { const [x0, y0] = POS[i - 1], [x, y] = POS[i]; d += ` Q${(x0 + x) / 2 + (i % 2 ? 60 : -60)} ${(y0 + y) / 2} ${x} ${y}`; }
+  svg.innerHTML = `<path d="${d}" fill="none" stroke="#c9a66b" stroke-width="10" stroke-linecap="round" stroke-dasharray="2 16"/>` +
+    SCENES.map((s, i) => {
+      const [x, y] = POS[i], done = i < next, cur = i === next;
+      return `<g transform="translate(${x} ${y})">
+        ${cur ? '<circle r="34" fill="#ff5d8f" opacity=".3"><animate attributeName="r" values="28;40;28" dur="1.4s" repeatCount="indefinite"/></circle>' : ''}
+        <circle r="26" fill="${done ? '#9be38b' : cur ? '#ffcf33' : '#fff'}" stroke="#2b1d3a" stroke-width="4"/>
+        <text y="9" text-anchor="middle" font-size="26">${done ? '✅' : s.name.split(' ')[0]}</text>
+        <text y="${y > 330 ? -36 : 46}" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="14" fill="#2b1d3a">${s.name.split(' ').slice(1).join(' ')}</text>
+      </g>`;
+    }).join('');
+}
+function showMap(next) {
+  return new Promise(res => {
+    drawMap(next); $('#map').classList.add('on'); sfx.open();
+    $('#mapgo').textContent = next === SCENES.length - 1 ? 'To the treasure! 💰' : `Next: ${SCENES[next].name.split(' ').slice(1).join(' ')} →`;
+    $('#mapgo').onclick = () => { $('#map').classList.remove('on'); res(); };
+  });
+}
+async function sayMap(next) {
+  await say('s', 'Where do we go next? Say… MAP!');
+  await button('🗺️ MAP!');
+  await showMap(next);
+}
+
+/* ---------- the story ---------- */
+async function play() {
+  setScene(0); stage.style.background = 'linear-gradient(180deg,#7fd3ff,#c9f0ff 58%,#9be38b 58%,#6cc35b)'; chip.classList.remove('on');
+  $('#deco').innerHTML = ['☁️', '🎈', '☁️', '🎉', '☁️'].map((e, k) => `<span style="left:${6 + k * 20}%;top:${8 + (k % 2) * 14}%;font-size:${36 + (k % 3) * 12}px;animation-delay:${k * .6}s">${e}</span>`).join('');
+  await say('s', "¡Hola! I'm Stetho, your trusty stethoscope. 🩺");
+  await say('s', "Your birthday isn't here yet… but the celebrations start NOW. This is your Pre-Birthday Quest!");
+  pop('img/intro.jpg', 'the birthday girl');
+  await say('s', 'Somewhere out there is a LEGENDARY treasure. And it has your name on it.');
+  await say('n', 'Treasure? For me?? No no no, why would you…');
+  await say('s', "Yes, for you. No crying yet, we've got work to do.");
+  await say('s', 'Mirror Mountain, Kunjus Canyon, Hospital Bridge, the Gift Cave and Sneaky Forest. Can you help us get through all of them?');
+  await say('n', "Let's do this!");
+  clearPops();
+  await sayMap(0);
+
+  // 1 Mirror Mountain
+  setScene(0);
+  await say('s', 'Welcome to Mirror Mountain, where every surface is a mirror and every mirror is already taken.');
+  await say('n', 'Honestly? I feel at home here.');
+  await say('s', 'To climb the mountain, answer this. Quick!');
+  await imageChoice('Which one is the REAL Nandana?', ['img/mirror-1.jpg', 'img/mirror-2.jpg', 'img/mirror-3.jpg', 'img/mirror-4.jpg']);
+  await say('s', "Correct! It was a trick question. They're ALL you. You live here, basically.");
+  await say('s', 'We did it! Mirror Mountain: conquered. 🎉');
+  await sayMap(1);
+
+  // 2 Kunjus Canyon
+  setScene(1);
+  await say('s', 'Kunjus Canyon! This canyon only lets you pass if you say its secret name.');
+  await say('s', 'Oh no, the letters fell down the cliff!');
+  await scramble('KUNJUS');
+  pop('img/close-jhumka.jpg', 'certified Kunjus');
+  await say('s', 'KUNJUS! The canyon approves. 🤍');
+  await say('n', 'Obviously. It was my name.');
+  clearPops();
+  await sayMap(2);
+
+  // 3 Hospital Bridge
+  setScene(2);
+  await say('s', 'Hospital Bridge. Only real doctors can cross this one.');
+  pop('img/doctor.jpg', 'Dr. Nandana, on duty');
+  await say('n', 'Good thing I am one.');
+  await say('s', 'One question, Doctor.');
+  await choice('After the hardest, longest shift of her life… when does Nandana run back?', [
+    { t: 'After 12 hours' }, { t: 'After 24 hours' }, { t: 'After 36 hours' }, { t: 'Never', ok: true },
+  ], ['Nope. Think stronger. 💪', 'Not even close. Try again!', 'Wrong! You know her better than that.']);
+  await say('s', 'NEVER. She never runs back. She is strong and always moves forward. 💪');
+  await say('s', 'The bridge is open. Onwards!');
+  clearPops();
+  await sayMap(3);
+
+  // 4 Gift Cave
+  setScene(3);
+  await say('s', 'Uh oh. The Gift Cave. Someone in here wants to give you… a present.');
+  await say('n', 'A PRESENT?? 😭');
+  await say('s', 'Stay calm. Breathe. Choose wisely.');
+  await choice('Someone hands you a gift. What do you do?', [
+    { t: 'Cry 😭' }, { t: 'Cry more 😭😭' }, { t: "Say “why would you…”" }, { t: 'Accept it without crying 😌', ok: true },
+  ], ['The cave is flooding with tears. Try again!', 'Water levels: critical. Try again!', 'We all knew you would say that. Try again!']);
+  pop('img/gifts.jpg', 'earlier footage, for reference');
+  await say('s', 'Growth! Character development! The cave lets us through.');
+  clearPops();
+  await sayMap(4);
+
+  // 5 Sneaky Forest
+  setScene(4);
+  await say('s', 'Sneaky Forest. Careful… someone sneaky lives here.');
+  fox.className = 'in'; await wait(500);
+  await say('f', "Hehehe! You'll never find the treasure without the last clue. I'm taking it!");
+  await say('s', 'Quick! Stop him! Say it three times!');
+  await tapN('Stop the sneaky fox!', 'No swiping! ✋', 3);
+  fox.className = 'out';
+  await say('f', 'Ugh, fine! Take it!');
+  pop('img/off-forest.jpg', 'free at last');
+  await say('s', 'We got the last clue! The treasure is right ahead!');
+  clearPops(); fox.className = ''; fox.style.display = 'none';
+  await sayMap(5);
+
+  // 6 Treasure
+  setScene(5);
+  await say('s', 'We made it! The LEGENDARY treasure chest!');
+  await say('n', 'Is it… shaking?');
+  await say('s', 'Tap it to open it!');
+  dialog.classList.remove('on');
+  const tr = $('#treasure'), chest = $('#bigchest');
+  tr.classList.add('on'); chest.classList.add('wiggle'); toon.classList.add('aside');
+  await new Promise(r => chest.onclick = r);
+  chest.classList.remove('wiggle'); chest.classList.add('open'); sfx.open(); confetti(); bgm.volume = 1;
+  await wait(1100);
+  $('#prize').classList.add('on'); confetti();
+  await wait(5500);
+  $('#prize').classList.remove('on'); tr.classList.remove('on'); chest.classList.remove('open'); toon.classList.remove('aside');
+  await say('n', '…');
+  await say('n', 'I want a refund.');
+  await say('s', "No refunds. But wait… what's that tiny chest hiding behind it?");
+  dialog.classList.remove('on');
+  const fin = $('#final'), sc = $('#smallchest');
+  fin.classList.add('on'); sc.classList.add('wiggle'); sc.style.display = '';
+  await new Promise(r => sc.onclick = r);
+  sc.classList.remove('wiggle'); sc.classList.add('open'); sfx.open();
+  await wait(700);
+  sc.style.display = 'none';
+  ['#oldph', '#finalh', '#trailer', '#again', '.hub'].forEach(s => $(s).style.display = s === '.hub' ? 'inline-block' : 'block');
+  $('#scroll').style.display = 'block';
+  confetti();
+}
+
+/* ---------- final screen bits ---------- */
+$('#scroll').onclick = () => { sfx.open(); $('#note').classList.add('on'); };
+$('#noteclose').onclick = () => $('#note').classList.remove('on');
+$('#again').onclick = () => {
+  fox.style.display = '';
+  $('#final').classList.remove('on');
+  ['#oldph', '#finalh', '#trailer', '#again', '#scroll'].forEach(s => $(s).style.display = 'none');
+  const sc = $('#smallchest'); sc.classList.remove('open'); sc.style.display = '';
+  play();
+};
+
+/* ---------- confetti ---------- */
+function confetti() {
+  const c = $('#confetti'), x = c.getContext('2d'); c.width = stage.clientWidth; c.height = stage.clientHeight;
+  const cols = ['#ff5d8f', '#ffcf33', '#19b5a5', '#7b4fd6', '#ff8a3d', '#3fae4f'];
+  const ps = Array.from({ length: 160 }, () => ({ x: c.width / 2, y: c.height * .45, vx: (Math.random() - .5) * 14, vy: -Math.random() * 14 - 4, s: 6 + Math.random() * 6, r: Math.random() * 6, c: cols[Math.floor(Math.random() * cols.length)] }));
+  let f = 0;
+  (function tick() {
+    x.clearRect(0, 0, c.width, c.height);
+    ps.forEach(p => { p.vy += .35; p.x += p.vx; p.y += p.vy; p.r += .2; x.save(); x.translate(p.x, p.y); x.rotate(p.r); x.fillStyle = p.c; x.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); x.restore(); });
+    if (++f < 150) requestAnimationFrame(tick); else x.clearRect(0, 0, c.width, c.height);
+  })();
+}
+
+stage.addEventListener('scroll', () => { stage.scrollLeft = 0; stage.scrollTop = 0; });
+/* ---------- start ---------- */
+$('#go').onclick = () => {
+  $('#start').classList.remove('on');
+  bgm.volume = .55; bgm.play().catch(() => {});
+  try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {}
+  play();
+};
+</script>
+</body>
+</html>
